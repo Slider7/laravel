@@ -20,9 +20,8 @@ Route::get('/', function () {
 // REST Quiz
 
 Route::get('/quizzes', 'QuizController@index');
-
 Route::post('/quizzes', 'QuizController@store');
-
-Route::get('/quizzes/create', 'QuizController@create');
-
-Route::get('/quizzes/{quiz}', 'QuizController@show');
+Route::get('/quizzes/create', 'QuizController@create')->name('quizzes.create');
+Route::get('/quizzes/{quiz}', 'QuizController@show')->name('quizzes.show');
+Route::get('/quizzes/{quiz}/edit', 'QuizController@edit');
+Route::put('/quizzes/{quiz}', 'QuizController@update');

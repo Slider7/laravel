@@ -39,15 +39,14 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        //die('Hello!'); //dump(request()->all());
-        $quiz = new Quiz();
-
+        /*      $quiz = new Quiz();
         $quiz->quiz_name = request('quiz_name');
         $quiz->quiz_code = request('quiz_code');
         $quiz->Program = request('program');
         $quiz->Unit = request('unit');
+        $quiz->save();      */
 
-        $quiz->save();
+        Quiz::create($this->validateQuiz());
         return redirect('/quizzes');
     }
 
@@ -59,9 +58,8 @@ class QuizController extends Controller
      */
     public function show(Quiz $quiz)
     {
-        return view('quiz.show', [
-            'quiz' => $quiz
-        ]);
+        //$quiz = Quiz::findOrFail($id);
+        return view('quiz.show', ['quiz' => $quiz]);
     }
 
     /**
@@ -72,7 +70,7 @@ class QuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
-        //
+        return view('quiz.edit', compact('quiz'));
     }
 
     /**
@@ -84,7 +82,9 @@ class QuizController extends Controller
      */
     public function update(Request $request, Quiz $quiz)
     {
-        //
+        $quiz->update($this->validateQuiz());
+
+        return redirect($quiz->path());
     }
 
     /**
@@ -96,5 +96,16 @@ class QuizController extends Controller
     public function destroy(Quiz $quiz)
     {
         //
+    }
+
+    //созданный специально во избежание дублирования кода метод для валидации
+    protected function validateQuiz()
+    {
+        return request()->validate([
+            'quiz_name' => ['required', 'min:3', 'max:200'],
+            'quiz_code' => '',
+            'program' => 'required',
+            'unit' => 'required',
+        ]);
     }
 }

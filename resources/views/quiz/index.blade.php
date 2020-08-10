@@ -2,8 +2,11 @@
 
 @section ('content')
 <div>
-    <h1 class='text-center'>Перечень тестов(quiz):</h1>
-
+    <h1 class='text-center'>Список тестов(quiz-ов):</h1>
+    <div class="d-flex flex-row justify-content-end">
+        <a class="btn btn-outline-primary mb-2" href="{{ route('quizzes.create') }}" role="button">Новый Quiz</a>
+        <a class="btn btn-outline-secondary mb-2 ml-4" href="/" role="button">&nbsp&nbsp&nbsp Выход &nbsp&nbsp&nbsp</a>
+    </div>
     <table id="quiz-table" class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -14,13 +17,13 @@
                 <th>Unit</th>
             </tr>
         </thead>
-        @foreach($quizzes as $row)
+        @foreach($quizzes as $quiz)
         <tr>
-            <td style='display: none;'>{{$row['quiz_id']}}</td>
-            <td>{{$row['quiz_name']}}</td>
-            <td>{{$row['quiz_code']}}</td>
-            <td>{{$row['Program']}}</td>
-            <td>{{$row['Unit']}}</td>
+            <td style='display: none;'>{{$quiz['quiz_id']}}</td>
+            <td><a href="{{ $quiz->path() }}">{{$quiz['quiz_name']}}</a></td>
+            <td>{{$quiz['quiz_code']}}</td>
+            <td>{{$quiz['Program']}}</td>
+            <td>{{$quiz['Unit']}}</td>
         </tr>
         @endforeach
     </table>

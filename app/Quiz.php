@@ -10,6 +10,9 @@ class Quiz extends Model
     protected $fillable = [
         'quiz_name', 'quiz_code', 'program', 'unit'
     ];
+    public function path(){
+        return route('quizzes.show', $this);
+    }
 
     protected $table = 'quiz';
     protected $primaryKey = 'quiz_id';
