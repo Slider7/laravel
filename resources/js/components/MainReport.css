@@ -1,0 +1,28 @@
+.rep-table td,
+.rep-table th {
+  cursor: pointer;
+}
+
+.rep-table tr:hover {
+  background-color: lightskyblue !important;
+}
+
+.table-striped th {
+  text-align: center;
+}
+.table-striped,
+.table-striped th {
+  border: 1px solid #222222 !important;
+  padding: 2px;
+}
+.table-striped td {
+  border-left: 1px solid #222222 !important;
+  padding: 2px;
+}
+
+.ok {
+  background-color: rgb(14, 173, 14);
+}
+.fail {
+  background-color: red;
+}
