@@ -21,7 +21,8 @@ class Main extends React.Component {
       reportData: [],
       gruppaReportData: [],
       gruppaReportFilter: {},
-      extraReportData: []
+      extraReportData: [],
+      testReportData: []
     };
   }
 
@@ -61,6 +62,10 @@ class Main extends React.Component {
     this.setState({ extraReportData });
   };
 
+  testReportChange = testReportData => {
+    this.setState({ testReportData });
+  };
+
   gruppaReportDataChange = (gruppaReportData, gruppaReportFilter) => {
     this.setState({ gruppaReportData, gruppaReportFilter });
   };
@@ -71,6 +76,15 @@ class Main extends React.Component {
 
   componentDidUpdate() {
     this.getFilter();
+  }
+
+  selectRow(evt) {
+    let selectedRow = document.querySelector(".rep-table .rep-selected");
+    if (selectedRow) {
+      selectedRow.classList.remove("rep-selected");
+    }
+    selectedRow = evt.target.parentNode;
+    selectedRow.classList.add("rep-selected");
   }
 
   render() {
@@ -94,6 +108,7 @@ class Main extends React.Component {
               getReportData={this.getReportData}
               gruppaReportApi={`/gruppa-report/${gruppaReportFilter}`}
               gruppaReportDataChange={this.gruppaReportDataChange}
+              selectRow={this.selectRow}
             />
             <GruppaReport
               data={this.state.gruppaReportData}
@@ -107,6 +122,9 @@ class Main extends React.Component {
             reportData={this.state.extraReportData}
             reportChange={this.extraReportChange}
             getReportData={this.getReportData}
+            testReportData={this.state.testReportData}
+            testReportChange={this.testReportChange}
+            selectRow={this.selectRow}
           />
         )}
       </div>

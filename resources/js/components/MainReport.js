@@ -4,15 +4,10 @@ import "./MainReport.css";
 
 class MainReport extends React.Component {
   gruppaReportChange = evt => {
-    let selectedRow = document.querySelector(".rep-table .rep-selected");
-    if (selectedRow) {
-      selectedRow.classList.remove(".rep-selected");
-    }
-    selectedRow = evt.target.parentNode;
-    selectedRow.classList.add("rep-selected");
+    this.props.selectRow(evt);
 
     let gruppaFilter = "";
-
+    const selectedRow = evt.target.parentNode;
     for (let i = 1; i <= 4; i++) {
       gruppaFilter += `${selectedRow.cells[i].textContent}/`;
     }

@@ -6331,7 +6331,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#extra-report-table tr:hover {\r\n  \r\n}\r\n", ""]);
+exports.push([module.i, "#extra-report-table tr:hover {\r\n  background-color: lightskyblue;\r\n}\r\n", ""]);
 
 // exports
 
@@ -6350,7 +6350,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".rep-table td,\r\n.rep-table th {\r\n  cursor: pointer;\r\n}\r\n\r\n.rep-table tr:hover {\r\n  background-color: lightskyblue !important;\r\n}\r\n\r\n.table-striped th {\r\n  text-align: center;\r\n}\r\n.table-striped,\r\n.table-striped th {\r\n  border: 1px solid #222222 !important;\r\n  padding: 2px;\r\n}\r\n.table-striped td {\r\n  border-left: 1px solid #222222 !important;\r\n  padding: 2px;\r\n}\r\n\r\n.ok {\r\n  background-color: rgb(14, 173, 14);\r\n}\r\n.fail {\r\n  background-color: red;\r\n}\r\n", ""]);
+exports.push([module.i, ".rep-table td,\r\n.rep-table th {\r\n  cursor: pointer;\r\n}\r\n\r\n.rep-table tr:hover {\r\n  background-color: lightskyblue !important;\r\n}\r\n.rep-selected {\r\n  background-color: lightskyblue !important;\r\n}\r\n\r\n.table-striped th {\r\n  text-align: center;\r\n}\r\n.table-striped,\r\n.table-striped th {\r\n  border: 1px solid #222222 !important;\r\n  padding: 2px;\r\n}\r\n.table-striped td {\r\n  border-left: 1px solid #222222 !important;\r\n  padding: 2px;\r\n}\r\n\r\n.ok {\r\n  background-color: rgb(14, 173, 14);\r\n}\r\n.fail {\r\n  background-color: red;\r\n}\r\n", ""]);
 
 // exports
 
@@ -66550,8 +66550,9 @@ if(false) {}
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ExtraReport_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExtraReport.css */ "./resources/js/components/ExtraReport.css");
-/* harmony import */ var _ExtraReport_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ExtraReport_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _TestReport__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TestReport */ "./resources/js/components/TestReport.js");
+/* harmony import */ var _ExtraReport_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ExtraReport.css */ "./resources/js/components/ExtraReport.css");
+/* harmony import */ var _ExtraReport_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ExtraReport_css__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66574,6 +66575,9 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -66583,9 +66587,25 @@ var ExtraReport = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(ExtraReport);
 
   function ExtraReport() {
+    var _this;
+
     _classCallCheck(this, ExtraReport);
 
-    return _super.apply(this, arguments);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "showTestDetails", function (evt) {
+      _this.props.selectRow(evt);
+
+      var api = "/answers/".concat(evt.target.parentNode.dataset.id);
+
+      _this.props.getReportData(api, _this.props.testReportChange);
+    });
+
+    return _this;
   }
 
   _createClass(ExtraReport, [{
@@ -66603,10 +66623,10 @@ var ExtraReport = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       console.log(this.props.reportData);
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container mx-auto"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "text-center mt-3"
@@ -66618,11 +66638,14 @@ var ExtraReport = /*#__PURE__*/function (_React$Component) {
       }, "qr_id"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.props.reportData.map(function (row, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: "rep".concat(i),
-          onClick: _this.gruppaReportChange
+          "data-id": row["qr_id"],
+          onClick: _this2.showTestDetails
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, i + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["stud_name"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["phone"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["teacher"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["program"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["unit"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["gruppa"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["user_score"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["finished_at"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["quiz_time"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
           className: "d-none"
         }, row["qr_id"]));
-      }))));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TestReport__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        reportData: this.props.testReportData
+      }));
     }
   }]);
 
@@ -66938,6 +66961,12 @@ var Main = /*#__PURE__*/function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "testReportChange", function (testReportData) {
+      _this.setState({
+        testReportData: testReportData
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "gruppaReportDataChange", function (gruppaReportData, gruppaReportFilter) {
       _this.setState({
         gruppaReportData: gruppaReportData,
@@ -66963,7 +66992,8 @@ var Main = /*#__PURE__*/function (_React$Component) {
       reportData: [],
       gruppaReportData: [],
       gruppaReportFilter: {},
-      extraReportData: []
+      extraReportData: [],
+      testReportData: []
     };
     return _this;
   }
@@ -66972,6 +67002,18 @@ var Main = /*#__PURE__*/function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
       this.getFilter();
+    }
+  }, {
+    key: "selectRow",
+    value: function selectRow(evt) {
+      var selectedRow = document.querySelector(".rep-table .rep-selected");
+
+      if (selectedRow) {
+        selectedRow.classList.remove("rep-selected");
+      }
+
+      selectedRow = evt.target.parentNode;
+      selectedRow.classList.add("rep-selected");
     }
   }, {
     key: "render",
@@ -66993,7 +67035,8 @@ var Main = /*#__PURE__*/function (_React$Component) {
         reportChange: this.reportChange,
         getReportData: this.getReportData,
         gruppaReportApi: "/gruppa-report/".concat(gruppaReportFilter),
-        gruppaReportDataChange: this.gruppaReportDataChange
+        gruppaReportDataChange: this.gruppaReportDataChange,
+        selectRow: this.selectRow
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GruppaReport__WEBPACK_IMPORTED_MODULE_3__["default"], {
         data: this.state.gruppaReportData,
         visible: this.state.reportData.length > 0,
@@ -67002,7 +67045,10 @@ var Main = /*#__PURE__*/function (_React$Component) {
         reportApi: "/extra-report/".concat(filter),
         reportData: this.state.extraReportData,
         reportChange: this.extraReportChange,
-        getReportData: this.getReportData
+        getReportData: this.getReportData,
+        testReportData: this.state.testReportData,
+        testReportChange: this.testReportChange,
+        selectRow: this.selectRow
       }));
     }
   }]);
@@ -67101,15 +67147,10 @@ var MainReport = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "gruppaReportChange", function (evt) {
-      var selectedRow = document.querySelector(".rep-table .rep-selected");
+      _this.props.selectRow(evt);
 
-      if (selectedRow) {
-        selectedRow.classList.remove(".rep-selected");
-      }
-
-      selectedRow = evt.target.parentNode;
-      selectedRow.classList.add("rep-selected");
       var gruppaFilter = "";
+      var selectedRow = evt.target.parentNode;
 
       for (var i = 1; i <= 4; i++) {
         gruppaFilter += "".concat(selectedRow.cells[i].textContent, "/");
@@ -67280,6 +67321,88 @@ var Selector = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Selector);
+
+/***/ }),
+
+/***/ "./resources/js/components/TestReport.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/TestReport.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ExtraReport_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExtraReport.css */ "./resources/js/components/ExtraReport.css");
+/* harmony import */ var _ExtraReport_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ExtraReport_css__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var TestReport = /*#__PURE__*/function (_React$Component) {
+  _inherits(TestReport, _React$Component);
+
+  var _super = _createSuper(TestReport);
+
+  function TestReport() {
+    _classCallCheck(this, TestReport);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(TestReport, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "".concat(this.props.reportData[0] ? "" : "d-none", " mx-5")
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "text-center mt-3"
+      }, "\u0414\u0430\u043D\u043D\u044B\u0435 \u0442\u0435\u0441\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        id: "extra-report-table",
+        className: "table table-striped table-hover rep-table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u2116"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quiz-\u043A\u043E\u0434"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u0422\u0435\u043A\u0441\u0442 \u0432\u043E\u043F\u0440\u043E\u0441\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "d-none"
+      }, "\u041E\u0442\u0432\u0435\u0442"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u041D\u0430\u0431\u0440\u0430\u043D\u043E \u0431\u0430\u043B\u043B\u043E\u0432"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u041F\u043E\u0440\u043E\u0433\u043E\u0432\u044B\u0439 \u0431\u0430\u043B\u043B"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.props.reportData.map(function (row, i) {
+        var ap = row["award_points"],
+            mp = row["maxpoint"];
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: "test-rep".concat(i)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, i + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["quiz_code"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["q_text"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "d-none"
+        }, row["user_resp"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: ap >= mp ? "ok" : "fail"
+        }, ap), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, mp));
+      }))));
+    }
+  }]);
+
+  return TestReport;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (TestReport);
 
 /***/ }),
 

@@ -6,6 +6,9 @@
 .rep-table tr:hover {
   background-color: lightskyblue !important;
 }
+.rep-selected {
+  background-color: lightskyblue !important;
+}
 
 .table-striped th {
   text-align: center;

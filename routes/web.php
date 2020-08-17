@@ -46,3 +46,7 @@ Route::get('/report', 'ReportController@index');
 Route::get('/report/{teacher}/{program}/{unit}/{gruppa}/{period}', 'ReportController@GroupedReport');
 Route::get('/gruppa-report/{teacher}/{program}/{unit}/{gruppa}', 'ReportController@GruppaDetailReport');
 Route::get('/extra-report/{teacher}/{program}/{unit}/{gruppa}/{period}', 'ReportController@filterReport');
+
+// REST GET Answers
+Route::get('/answers', 'AnswerController@index');
+Route::get('/answers/{quiz_result}', 'AnswerController@show');
