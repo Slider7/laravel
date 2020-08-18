@@ -33,11 +33,16 @@ class MainReport extends React.Component {
 
   render() {
     let period = "";
-    const sel = document.querySelector("#period");
-    if (sel && sel.selectedIndex) period = sel.options[sel.selectedIndex].text;
+    const sel = document.querySelector("select #period");
+    if (sel && sel.selectedIndex > 0)
+      period = sel.options[sel.selectedIndex].text;
     return (
       <div className="container mx-auto">
-        <h4 className="text-center mt-3">Отчет по тестированиям: {period}</h4>
+        <div className="d-flex justify-content-center align-items-center">
+          <h4 id="rep-header" className="text-center mt-3">
+            Отчет по тестированиям: {period}
+          </h4>
+        </div>
         <table
           id="quiz-table"
           className="table table-striped table-hover table-light rep-table"
@@ -56,7 +61,11 @@ class MainReport extends React.Component {
           <tbody>
             {this.props.reportData.map((row, i) => {
               return (
-                <tr key={`rep${i}`} onClick={this.gruppaReportChange}>
+                <tr
+                  key={`rep${i}`}
+                  onClick={this.gruppaReportChange}
+                  className="selectable"
+                >
                   <td>{i + 1}</td>
                   <td>{row["teacher"]}</td>
                   <td>{row["program"]}</td>

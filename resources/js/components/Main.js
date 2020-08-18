@@ -4,6 +4,7 @@ import Filter from "./Filter";
 import MainReport from "./MainReport";
 import GruppaReport from "./GruppaReport";
 import ExtraReport from "./ExtraReport";
+import { getReportData, selectRow } from "../utils";
 
 class Main extends React.Component {
   constructor() {
@@ -44,16 +45,6 @@ class Main extends React.Component {
     this.setState({ filter });
   };
 
-  getReportData = (api, callback) => {
-    fetch(api)
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        callback(data);
-      });
-  };
-
   reportChange = reportData => {
     this.setState({ reportData });
   };
@@ -78,15 +69,6 @@ class Main extends React.Component {
     this.getFilter();
   }
 
-  selectRow(evt) {
-    let selectedRow = document.querySelector(".rep-table .rep-selected");
-    if (selectedRow) {
-      selectedRow.classList.remove("rep-selected");
-    }
-    selectedRow = evt.target.parentNode;
-    selectedRow.classList.add("rep-selected");
-  }
-
   render() {
     const filter = this.getFilter(this.state.filter);
     const gruppaReportFilter = this.getFilter(this.state.gruppaReportFilter);
@@ -105,10 +87,10 @@ class Main extends React.Component {
               reportApi={`/report/${filter}`}
               reportData={this.state.reportData}
               reportChange={this.reportChange}
-              getReportData={this.getReportData}
+              getReportData={getReportData}
               gruppaReportApi={`/gruppa-report/${gruppaReportFilter}`}
               gruppaReportDataChange={this.gruppaReportDataChange}
-              selectRow={this.selectRow}
+              selectRow={selectRow}
             />
             <GruppaReport
               data={this.state.gruppaReportData}
@@ -121,10 +103,10 @@ class Main extends React.Component {
             reportApi={`/extra-report/${filter}`}
             reportData={this.state.extraReportData}
             reportChange={this.extraReportChange}
-            getReportData={this.getReportData}
+            getReportData={getReportData}
             testReportData={this.state.testReportData}
             testReportChange={this.testReportChange}
-            selectRow={this.selectRow}
+            selectRow={selectRow}
           />
         )}
       </div>

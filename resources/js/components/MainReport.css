@@ -3,7 +3,7 @@
   cursor: pointer;
 }
 
-.rep-table tr:hover {
+.rep-table .selectable:hover {
   background-color: lightskyblue !important;
 }
 .rep-selected {

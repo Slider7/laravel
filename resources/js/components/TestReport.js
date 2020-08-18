@@ -8,7 +8,7 @@ class TestReport extends React.Component {
       <div className={`${this.props.reportData[0] ? "" : "d-none"} mx-5`}>
         <h4 className="text-center mt-3">Данные тестирования: </h4>
         <table
-          id="extra-report-table"
+          id="test-report-table"
           className="table table-striped table-hover rep-table"
         >
           <thead>

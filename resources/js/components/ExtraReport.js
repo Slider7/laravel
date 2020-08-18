@@ -1,30 +1,51 @@
 import React, { Fragment } from "react";
+import TableExport from "tableexport";
 
 import TestReport from "./TestReport";
 import "./ExtraReport.css";
 
 class ExtraReport extends React.Component {
+  addExportButton = fname => {
+    const table = document.querySelector("#extra-report-table");
+    const el = document.querySelector(".xlsx");
+    if (el) {
+      el.parentNode.removeChild(el);
+    }
+    TableExport(table, {
+      headers: true, // (Boolean), display table headers (th or td elements) in the <thead>, (default: true)
+      formats: ["xlsx"], // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
+      filename: fname
+    });
+  };
+
   showTestDetails = evt => {
     this.props.selectRow(evt);
-
     const api = `/answers/${evt.target.parentNode.dataset.id}`;
     this.props.getReportData(api, this.props.testReportChange);
   };
+
   componentDidMount() {
     this.props.getReportData(this.props.reportApi, this.props.reportChange);
+    if (document.querySelector("#extra-report-table").rows.length)
+      this.addExportButton(document.querySelector("#extra-header").innerHTML);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.reportApi !== this.props.reportApi) {
       this.props.getReportData(this.props.reportApi, this.props.reportChange);
+      if (document.querySelector("#extra-report-table").rows.length)
+        this.addExportButton(document.querySelector("#extra-header").innerHTML);
     }
   }
   render() {
-    console.log(this.props.reportData);
     return (
       <Fragment>
-        <div className="container mx-auto">
-          <h4 className="text-center mt-3">Развернутый отчет: </h4>
+        <div className="container mx-auto extra-div">
+          <div className="d-flex justify-content-between align-items-center">
+            <h4 id="extra-header" className="text-center mt-3">
+              Развернутый отчет:{" "}
+            </h4>
+          </div>
           <table
             id="extra-report-table"
             className="table table-striped table-hover table-light rep-table"
@@ -41,7 +62,6 @@ class ExtraReport extends React.Component {
                 <th>Оценка</th>
                 <th>Дата</th>
                 <th>Затраченное время</th>
-                <th className="d-none">qr_id</th>
               </tr>
             </thead>
             <tbody>
@@ -51,6 +71,7 @@ class ExtraReport extends React.Component {
                     key={`rep${i}`}
                     data-id={row["qr_id"]}
                     onClick={this.showTestDetails}
+                    className="selectable"
                   >
                     <td>{i + 1}</td>
                     <td>{row["stud_name"]}</td>
@@ -62,7 +83,6 @@ class ExtraReport extends React.Component {
                     <td>{row["user_score"]}</td>
                     <td>{row["finished_at"]}</td>
                     <td>{row["quiz_time"]}</td>
-                    <td className="d-none">{row["qr_id"]}</td>
                   </tr>
                 );
               })}

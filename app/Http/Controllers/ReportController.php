@@ -80,7 +80,7 @@ class ReportController extends Controller
         'all_quiz_res.pass_score',
         'all_quiz_res.stud_percent',
         DB::raw('CAST(SUBSTRING(q_text, 1, 3) AS UNSIGNED) as qtext'),
-        DB::raw("concat(quiz_detail2.award_points,  '/' , quiz_detail2.maxpoint) as points"),
+        DB::raw("concat(quiz_detail2.award_points,  ' из ' , quiz_detail2.maxpoint) as points"),
         'quiz_detail2.result'
       );
 

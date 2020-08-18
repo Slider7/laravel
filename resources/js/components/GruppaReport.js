@@ -1,12 +1,29 @@
 import React, { Fragment } from "react";
+import TableExport from "tableexport";
 
 import "./MainReport.css";
 
 class GruppaReport extends React.Component {
+  tableExportButton = fname => {
+    const el = document.querySelector(".xlsx");
+    if (el) {
+      el.parentNode.removeChild(el);
+    }
+    TableExport(document.querySelector("#gruppa-table"), {
+      headers: true, // (Boolean), display table headers (th or td elements) in the <thead>, (default: true)
+      formats: ["xlsx"], // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
+      filename: fname
+    });
+  };
+
+  componentDidUpdate() {
+    if (document.querySelector("#gruppa-table"))
+      this.tableExportButton(
+        document.querySelector("#gruppa-header").innerHTML
+      );
+  }
   formatDataTable = data => {
     const ids = [...new Set(data.map(a => a.qr_id))];
-    if (ids.length) {
-    }
     let res = [];
     ids.forEach(id => {
       let row = [];
@@ -36,18 +53,18 @@ class GruppaReport extends React.Component {
 
       return (
         <div className={this.props.visible ? "" : "d-none"}>
-          <h4 className="text-center mt-3">
+          <h4 id="gruppa-header" className="text-center mt-3">
             Отчет тестирования группы{" "}
             {`${params[3]}, программа ${params[1]}, unit ${params[2]}, преподаватель ${params[0]}: `}
           </h4>
-          <table id="quiz-table" className="table table-striped gruppa-table">
+          <table id="gruppa-table" className="table table-striped gruppa-table">
             <thead>
               <tr>
                 <th>№</th>
-                <th>ФИО тестируемого</th>
-                <th>Проходной балл</th>
-                <th>Получено баллов</th>
-                <th>Результат(%)</th>
+                <th className="w-90">ФИО тестируемого</th>
+                <th className="w-90">Проходной балл</th>
+                <th className="w-90">Получено баллов</th>
+                <th className="w-90">Результат(%)</th>
                 {repData[0].slice(4).map((col, i) => (
                   <th key={i}>{col.qNum ? col.qNum : "Статус"}</th>
                 ))}
