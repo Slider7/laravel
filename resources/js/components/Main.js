@@ -1,10 +1,11 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
+import TableExport from 'tableexport';
 
-import Filter from "./Filter";
-import MainReport from "./MainReport";
-import GruppaReport from "./GruppaReport";
-import ExtraReport from "./ExtraReport";
-import { getReportData, selectRow } from "../utils";
+import Filter from './Filter';
+import MainReport from './MainReport';
+import GruppaReport from './GruppaReport';
+import ExtraReport from './ExtraReport';
+import { getReportData, selectRow } from '../utils';
 
 class Main extends React.Component {
   constructor() {
@@ -13,11 +14,11 @@ class Main extends React.Component {
     this.state = {
       isStandartMode: true,
       filter: {
-        teacher: "",
-        program: "",
-        unit: "",
-        gruppa: "",
-        period: ""
+        teacher: '',
+        program: '',
+        unit: '',
+        gruppa: '',
+        period: ''
       },
       reportData: [],
       gruppaReportData: [],
@@ -28,10 +29,10 @@ class Main extends React.Component {
   }
 
   getFilter = filterObj => {
-    let res = "";
+    let res = '';
     if (filterObj) {
       for (const [key, value] of Object.entries(filterObj)) {
-        res += `${value ? value : "none"}/`;
+        res += `${value ? value : 'none'}/`;
       }
     }
     return res.slice(0, -1);
@@ -39,7 +40,7 @@ class Main extends React.Component {
 
   filterChange = e => {
     e.preventDefault();
-    const key = e.target.getAttribute("id");
+    const key = e.target.getAttribute('id');
     const { filter } = this.state;
     filter[key] = e.target.value;
     this.setState({ filter });
@@ -50,7 +51,24 @@ class Main extends React.Component {
   };
 
   extraReportChange = extraReportData => {
-    this.setState({ extraReportData });
+    this.setState({ extraReportData }, this.updateExport);
+  };
+
+  updateExport = () => {
+    const table = document.querySelector('#extra-report-table');
+    const xls = document.querySelector('.xlsx'),
+      txt = document.querySelector('.txt');
+    if (xls) {
+      xls.parentNode.removeChild(xls);
+    }
+    if (txt) {
+      txt.parentNode.removeChild(txt);
+    }
+    TableExport(table, {
+      headers: true, // (Boolean), display table headers (th or td elements) in the <thead>, (default: true)
+      formats: ['xlsx', 'txt'],
+      filename: document.querySelector('#extra-header').innerHTML
+    });
   };
 
   testReportChange = testReportData => {
