@@ -50,3 +50,7 @@ Route::get('/extra-report/{teacher}/{program}/{unit}/{gruppa}/{period}', 'Report
 // REST GET Answers
 Route::get('/answers', 'AnswerController@index');
 Route::get('/answers/{quiz_result}', 'AnswerController@show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

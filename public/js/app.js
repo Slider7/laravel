@@ -2323,7 +2323,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
-  * Bootstrap v4.5.1 (https://getbootstrap.com/)
+  * Bootstrap v4.5.2 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -2377,7 +2377,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.5.1): util.js
+   * Bootstrap (v4.5.2): util.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -2558,7 +2558,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
    */
 
   var NAME = 'alert';
-  var VERSION = '4.5.1';
+  var VERSION = '4.5.2';
   var DATA_KEY = 'bs.alert';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -2714,7 +2714,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
    */
 
   var NAME$1 = 'button';
-  var VERSION$1 = '4.5.1';
+  var VERSION$1 = '4.5.2';
   var DATA_KEY$1 = 'bs.button';
   var EVENT_KEY$1 = "." + DATA_KEY$1;
   var DATA_API_KEY$1 = '.data-api';
@@ -2907,7 +2907,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
    */
 
   var NAME$2 = 'carousel';
-  var VERSION$2 = '4.5.1';
+  var VERSION$2 = '4.5.2';
   var DATA_KEY$2 = 'bs.carousel';
   var EVENT_KEY$2 = "." + DATA_KEY$2;
   var DATA_API_KEY$2 = '.data-api';
@@ -3494,7 +3494,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
    */
 
   var NAME$3 = 'collapse';
-  var VERSION$3 = '4.5.1';
+  var VERSION$3 = '4.5.2';
   var DATA_KEY$3 = 'bs.collapse';
   var EVENT_KEY$3 = "." + DATA_KEY$3;
   var DATA_API_KEY$3 = '.data-api';
@@ -3843,7 +3843,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
    */
 
   var NAME$4 = 'dropdown';
-  var VERSION$4 = '4.5.1';
+  var VERSION$4 = '4.5.2';
   var DATA_KEY$4 = 'bs.dropdown';
   var EVENT_KEY$4 = "." + DATA_KEY$4;
   var DATA_API_KEY$4 = '.data-api';
@@ -4357,7 +4357,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
    */
 
   var NAME$5 = 'modal';
-  var VERSION$5 = '4.5.1';
+  var VERSION$5 = '4.5.2';
   var DATA_KEY$5 = 'bs.modal';
   var EVENT_KEY$5 = "." + DATA_KEY$5;
   var DATA_API_KEY$5 = '.data-api';
@@ -4967,7 +4967,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.5.1): tools/sanitizer.js
+   * Bootstrap (v4.5.2): tools/sanitizer.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -5093,7 +5093,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
    */
 
   var NAME$6 = 'tooltip';
-  var VERSION$6 = '4.5.1';
+  var VERSION$6 = '4.5.2';
   var DATA_KEY$6 = 'bs.tooltip';
   var EVENT_KEY$6 = "." + DATA_KEY$6;
   var JQUERY_NO_CONFLICT$6 = $.fn[NAME$6];
@@ -5805,7 +5805,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
    */
 
   var NAME$7 = 'popover';
-  var VERSION$7 = '4.5.1';
+  var VERSION$7 = '4.5.2';
   var DATA_KEY$7 = 'bs.popover';
   var EVENT_KEY$7 = "." + DATA_KEY$7;
   var JQUERY_NO_CONFLICT$7 = $.fn[NAME$7];
@@ -5985,7 +5985,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
    */
 
   var NAME$8 = 'scrollspy';
-  var VERSION$8 = '4.5.1';
+  var VERSION$8 = '4.5.2';
   var DATA_KEY$8 = 'bs.scrollspy';
   var EVENT_KEY$8 = "." + DATA_KEY$8;
   var DATA_API_KEY$6 = '.data-api';
@@ -6277,7 +6277,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
    */
 
   var NAME$9 = 'tab';
-  var VERSION$9 = '4.5.1';
+  var VERSION$9 = '4.5.2';
   var DATA_KEY$9 = 'bs.tab';
   var EVENT_KEY$9 = "." + DATA_KEY$9;
   var DATA_API_KEY$7 = '.data-api';
@@ -6503,7 +6503,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
    */
 
   var NAME$a = 'toast';
-  var VERSION$a = '4.5.1';
+  var VERSION$a = '4.5.2';
   var DATA_KEY$a = 'bs.toast';
   var EVENT_KEY$a = "." + DATA_KEY$a;
   var JQUERY_NO_CONFLICT$a = $.fn[NAME$a];
@@ -19899,7 +19899,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.19';
+  var VERSION = '4.17.20';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -35475,7 +35475,7 @@ return jQuery;
      * // => [{ 'a': 4, 'b': 5, 'c': 6 }]
      *
      * // Checking for several possible values
-     * _.filter(users, _.overSome([_.matches({ 'a': 1 }), _.matches({ 'a': 4 })]));
+     * _.filter(objects, _.overSome([_.matches({ 'a': 1 }), _.matches({ 'a': 4 })]));
      * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
      */
     function matches(source) {
@@ -35512,7 +35512,7 @@ return jQuery;
      * // => { 'a': 4, 'b': 5, 'c': 6 }
      *
      * // Checking for several possible values
-     * _.filter(users, _.overSome([_.matchesProperty('a', 1), _.matchesProperty('a', 4)]));
+     * _.filter(objects, _.overSome([_.matchesProperty('a', 1), _.matchesProperty('a', 4)]));
      * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
      */
     function matchesProperty(path, srcValue) {
@@ -101825,12 +101825,9 @@ if(false) {}
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var tableexport__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tableexport */ "./node_modules/tableexport/dist/js/tableexport.js");
-/* harmony import */ var tableexport__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(tableexport__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _TestReport__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TestReport */ "./resources/js/components/TestReport.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
-/* harmony import */ var _ExtraReport_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ExtraReport.css */ "./resources/js/components/ExtraReport.css");
-/* harmony import */ var _ExtraReport_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_ExtraReport_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _TestReport__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TestReport */ "./resources/js/components/TestReport.js");
+/* harmony import */ var _ExtraReport_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ExtraReport.css */ "./resources/js/components/ExtraReport.css");
+/* harmony import */ var _ExtraReport_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ExtraReport_css__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -101859,40 +101856,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-
 var ExtraReport = /*#__PURE__*/function (_React$Component) {
   _inherits(ExtraReport, _React$Component);
 
   var _super = _createSuper(ExtraReport);
 
-  function ExtraReport() {
+  function ExtraReport(props) {
     var _this;
 
     _classCallCheck(this, ExtraReport);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty(_assertThisInitialized(_this), "addExportButton", function (fname) {
-      var table = document.querySelector("#extra-report-table");
-      var el = document.querySelector(".xlsx");
-
-      if (el) {
-        el.parentNode.removeChild(el);
-      }
-
-      tableexport__WEBPACK_IMPORTED_MODULE_1___default()(table, {
-        headers: true,
-        // (Boolean), display table headers (th or td elements) in the <thead>, (default: true)
-        formats: ["xlsx"],
-        // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
-        filename: fname
-      });
-    });
+    _this = _super.call(this, props);
 
     _defineProperty(_assertThisInitialized(_this), "showTestDetails", function (evt) {
       _this.props.selectRow(evt);
@@ -101902,6 +101876,7 @@ var ExtraReport = /*#__PURE__*/function (_React$Component) {
       _this.props.getReportData(api, _this.props.testReportChange);
     });
 
+    var expTable = null;
     return _this;
   }
 
@@ -101909,14 +101884,12 @@ var ExtraReport = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.getReportData(this.props.reportApi, this.props.reportChange);
-      if (document.querySelector("#extra-report-table").rows.length) this.addExportButton(document.querySelector("#extra-header").innerHTML);
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.reportApi !== this.props.reportApi) {
         this.props.getReportData(this.props.reportApi, this.props.reportChange);
-        if (document.querySelector("#extra-report-table").rows.length) this.addExportButton(document.querySelector("#extra-header").innerHTML);
       }
     }
   }, {
@@ -101931,17 +101904,17 @@ var ExtraReport = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         id: "extra-header",
         className: "text-center mt-3"
-      }, "\u0420\u0430\u0437\u0432\u0435\u0440\u043D\u0443\u0442\u044B\u0439 \u043E\u0442\u0447\u0435\u0442:", " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, "\u0420\u0430\u0437\u0432\u0435\u0440\u043D\u0443\u0442\u044B\u0439 \u043E\u0442\u0447\u0435\u0442:", ' ')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "extra-report-table",
         className: "table table-striped table-hover table-light rep-table"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u2116"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u0424\u0418\u041E \u0442\u0435\u0441\u0442\u0438\u0440\u0443\u0435\u043C\u043E\u0433\u043E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u0422\u0435\u043B\u0435\u0444\u043E\u043D"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u0442\u0435\u043B\u044C"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u042E\u043D\u0438\u0442"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u0413\u0440\u0443\u043F\u043F\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u041E\u0446\u0435\u043D\u043A\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u0414\u0430\u0442\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u0417\u0430\u0442\u0440\u0430\u0447\u0435\u043D\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.props.reportData.map(function (row, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: "rep".concat(i),
-          "data-id": row["qr_id"],
+          "data-id": row['qr_id'],
           onClick: _this2.showTestDetails,
           className: "selectable"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, i + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["stud_name"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["phone"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["teacher"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["program"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["unit"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["gruppa"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["user_score"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["finished_at"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["quiz_time"]));
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TestReport__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, i + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['stud_name']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['phone']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['teacher']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['program']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['unit']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['gruppa']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['user_score']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['finished_at']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['quiz_time']));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TestReport__WEBPACK_IMPORTED_MODULE_1__["default"], {
         reportData: this.props.testReportData
       }));
     }
@@ -102185,11 +102158,13 @@ var GruppaReport = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Filter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Filter */ "./resources/js/components/Filter.js");
-/* harmony import */ var _MainReport__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MainReport */ "./resources/js/components/MainReport.js");
-/* harmony import */ var _GruppaReport__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GruppaReport */ "./resources/js/components/GruppaReport.js");
-/* harmony import */ var _ExtraReport__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ExtraReport */ "./resources/js/components/ExtraReport.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
+/* harmony import */ var tableexport__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tableexport */ "./node_modules/tableexport/dist/js/tableexport.js");
+/* harmony import */ var tableexport__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(tableexport__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Filter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Filter */ "./resources/js/components/Filter.js");
+/* harmony import */ var _MainReport__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MainReport */ "./resources/js/components/MainReport.js");
+/* harmony import */ var _GruppaReport__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./GruppaReport */ "./resources/js/components/GruppaReport.js");
+/* harmony import */ var _ExtraReport__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ExtraReport */ "./resources/js/components/ExtraReport.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -102233,6 +102208,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var Main = /*#__PURE__*/function (_React$Component) {
   _inherits(Main, _React$Component);
 
@@ -102246,7 +102222,7 @@ var Main = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this);
 
     _defineProperty(_assertThisInitialized(_this), "getFilter", function (filterObj) {
-      var res = "";
+      var res = '';
 
       if (filterObj) {
         for (var _i = 0, _Object$entries = Object.entries(filterObj); _i < _Object$entries.length; _i++) {
@@ -102254,7 +102230,7 @@ var Main = /*#__PURE__*/function (_React$Component) {
               key = _Object$entries$_i[0],
               value = _Object$entries$_i[1];
 
-          res += "".concat(value ? value : "none", "/");
+          res += "".concat(value ? value : 'none', "/");
         }
       }
 
@@ -102263,7 +102239,7 @@ var Main = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "filterChange", function (e) {
       e.preventDefault();
-      var key = e.target.getAttribute("id");
+      var key = e.target.getAttribute('id');
       var filter = _this.state.filter;
       filter[key] = e.target.value;
 
@@ -102281,6 +102257,27 @@ var Main = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "extraReportChange", function (extraReportData) {
       _this.setState({
         extraReportData: extraReportData
+      }, _this.updateExport);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "updateExport", function () {
+      var table = document.querySelector('#extra-report-table');
+      var xls = document.querySelector('.xlsx'),
+          txt = document.querySelector('.txt');
+
+      if (xls) {
+        xls.parentNode.removeChild(xls);
+      }
+
+      if (txt) {
+        txt.parentNode.removeChild(txt);
+      }
+
+      tableexport__WEBPACK_IMPORTED_MODULE_1___default()(table, {
+        headers: true,
+        // (Boolean), display table headers (th or td elements) in the <thead>, (default: true)
+        formats: ['xlsx', 'txt'],
+        filename: document.querySelector('#extra-header').innerHTML
       });
     });
 
@@ -102306,11 +102303,11 @@ var Main = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       isStandartMode: true,
       filter: {
-        teacher: "",
-        program: "",
-        unit: "",
-        gruppa: "",
-        period: ""
+        teacher: '',
+        program: '',
+        unit: '',
+        gruppa: '',
+        period: ''
       },
       reportData: [],
       gruppaReportData: [],
@@ -102335,31 +102332,31 @@ var Main = /*#__PURE__*/function (_React$Component) {
         className: "mx-4"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "text-center mb-1"
-      }, "\u0410\u043D\u0430\u043B\u0438\u0437 \u0442\u0435\u0441\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0439"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Filter__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, "\u0410\u043D\u0430\u043B\u0438\u0437 \u0442\u0435\u0441\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0439"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Filter__WEBPACK_IMPORTED_MODULE_2__["default"], {
         filter: this.state.filter,
         filterChange: this.filterChange,
         mode: this.state.isStandartMode,
         modeChange: this.modeChange
-      }), this.state.isStandartMode ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MainReport__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), this.state.isStandartMode ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MainReport__WEBPACK_IMPORTED_MODULE_3__["default"], {
         reportApi: "/report/".concat(filter),
         reportData: this.state.reportData,
         reportChange: this.reportChange,
-        getReportData: _utils__WEBPACK_IMPORTED_MODULE_5__["getReportData"],
+        getReportData: _utils__WEBPACK_IMPORTED_MODULE_6__["getReportData"],
         gruppaReportApi: "/gruppa-report/".concat(gruppaReportFilter),
         gruppaReportDataChange: this.gruppaReportDataChange,
-        selectRow: _utils__WEBPACK_IMPORTED_MODULE_5__["selectRow"]
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GruppaReport__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        selectRow: _utils__WEBPACK_IMPORTED_MODULE_6__["selectRow"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GruppaReport__WEBPACK_IMPORTED_MODULE_4__["default"], {
         data: this.state.gruppaReportData,
         visible: this.state.reportData.length > 0,
         filter: this.state.gruppaReportFilter
-      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ExtraReport__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ExtraReport__WEBPACK_IMPORTED_MODULE_5__["default"], {
         reportApi: "/extra-report/".concat(filter),
         reportData: this.state.extraReportData,
         reportChange: this.extraReportChange,
-        getReportData: _utils__WEBPACK_IMPORTED_MODULE_5__["getReportData"],
+        getReportData: _utils__WEBPACK_IMPORTED_MODULE_6__["getReportData"],
         testReportData: this.state.testReportData,
         testReportChange: this.testReportChange,
-        selectRow: _utils__WEBPACK_IMPORTED_MODULE_5__["selectRow"]
+        selectRow: _utils__WEBPACK_IMPORTED_MODULE_6__["selectRow"]
       }));
     }
   }]);
@@ -102832,8 +102829,8 @@ var selectRow = function selectRow(evt) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Projects\quizres\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Projects\quizres\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Projects\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Projects\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),
