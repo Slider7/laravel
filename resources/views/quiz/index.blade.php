@@ -1,7 +1,7 @@
 @extends ('layout')
 
 @section ('content')
-<div>
+<div class="container">
   <h3 class='text-center'>Список тестов(quiz-ов):</h3>
   <div class="d-flex flex-row justify-content-end">
     <a class="btn btn-outline-primary mb-2" href="{{ route('quizzes.create') }}" role="button">Новый Quiz</a>
