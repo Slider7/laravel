@@ -21,6 +21,7 @@
 </head>
 <body>
     <div id="app">
+        <!-- Message -->
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm p-1">
             <div class="container">
                 <a class="navbar-brand py-0" href="{{ url('/') }}">
@@ -51,10 +52,11 @@
                         @else
                             @if (Gate::allows('admin-quizzes'))
                             <li class="nav-item">
-                                <a class="btn btn-outline-secondary p-1 my-1" href="/quizzes" role="button">
+                                <a class="btn btn-outline-secondary p-1 my-1" href="/quizmanage" role="button">
                                     Управление Quiz-ами
                                 </a>
                             </li>
+
                             @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -80,6 +82,13 @@
         </nav>
 
         <main class="py-4">
+          <!-- Message -->
+            @if(Session::has('message'))
+            <div class="d-flex justify-content-center">
+              <h4 class='d-inline-block text-center text-white bg-primary p-1'>{{ Session::get('message') }}</h4>
+            </div>
+            @endif
+
             @yield('content')
         </main>
     </div>

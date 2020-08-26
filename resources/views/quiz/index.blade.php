@@ -4,7 +4,7 @@
 <div class="container">
   <h3 class='text-center'>Список тестов(quiz-ов):</h3>
   <div class="d-flex flex-row justify-content-end">
-    <a class="btn btn-outline-primary mb-2" href="{{ route('quizzes.create') }}" role="button">Новый Quiz</a>
+    <a class="btn btn-outline-primary mb-2" href="{{ route('quizmanage.create') }}" role="button">Новый Quiz</a>
     <a class="btn btn-outline-secondary mb-2 ml-4" href="/" role="button">&nbsp&nbsp&nbsp Выход &nbsp&nbsp&nbsp</a>
   </div>
   <table id="quiz-table" class="table table-bordered table-striped">

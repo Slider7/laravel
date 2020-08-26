@@ -19,12 +19,13 @@ Route::get('/', function () {
 });
 
 // REST Quiz
-Route::group(['prefix' => 'quizzes',  'middleware' =>  ['auth', 'can:admin-quizzes']], function()
+Route::group(['prefix' => 'quizmanage',  'middleware' =>  ['auth', 'can:admin-quizzes']], function()
 {
   Route::get('/', 'QuizController@index');
   Route::post('/', 'QuizController@store');
-  Route::get('/create', 'QuizController@create')->name('quizzes.create');
-  Route::get('/{quiz}', 'QuizController@show')->name('quizzes.show');
+  Route::get('/create', 'QuizController@create')->name('quizmanage.create');
+  Route::delete('/{quiz}', 'QuizController@destroy');
+  Route::get('/{quiz}', 'QuizController@show')->name('quizmanage.show');
   Route::get('/{quiz}/edit', 'QuizController@edit');
   Route::put('/{quiz}', 'QuizController@update');
 });
@@ -34,8 +35,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // REST quiz_results
-Route::get('/quizresults', 'QuizResultController@index');
-Route::get('/quizresults/{quiz_result}', 'QuizResultController@show');
+Route::group(['prefix' => 'qr',  'middleware' =>  ['auth', 'can:admin-results']], function(){
+  Route::get('/', 'QuizResultController@index');
+  Route::post('/{quiz_result}', 'QuizResultController@destroy');
+  Route::get('/{quiz_result}', 'QuizResultController@show');
+});
 
 // REST GET filter columns
 Route::get('/program-col', 'QuizController@programs');

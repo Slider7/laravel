@@ -4,7 +4,8 @@
  * building robust, powerful web applications using React + Laravel.
  */
 
-require("./bootstrap");
+require('./bootstrap');
+require('bootstrap-confirmation2');
 
 /**
  * Next, we will create a fresh React component instance and attach it to
@@ -13,11 +14,11 @@ require("./bootstrap");
  */
 
 /* Import the Main component */
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import Main from "./components/Main";
+import Main from './components/Main';
 
-if (document.getElementById("root")) {
-  ReactDOM.render(<Main />, document.getElementById("root"));
+if (document.getElementById('root')) {
+  ReactDOM.render(<Main />, document.getElementById('root'));
 }

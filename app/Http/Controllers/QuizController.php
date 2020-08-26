@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Quiz;
+use \App\QuizREsult;
 use Illuminate\Http\Request;
 
 use function GuzzleHttp\Promise\all;
@@ -47,7 +49,7 @@ class QuizController extends Controller
         $quiz->save();      */
 
     Quiz::create($this->validateQuiz());
-    return redirect('/quizzes');
+    return redirect('/quizmanage');
   }
 
   /**
@@ -95,7 +97,19 @@ class QuizController extends Controller
    */
   public function destroy(Quiz $quiz)
   {
-    //
+    $quizzes = QuizResult::distinct()->select('quiz_id')->where('quiz_id', '=', $quiz->quiz_id)->get();
+    if ($quizzes->count() === 0){
+      $destroy = Quiz::destroy($quiz->quiz_id);
+      if ($destroy) {
+        Session::flash('message','Quiz ' . $quiz->quiz_code .' успешно удален.');
+      } else {
+        Session::flash('message','Quiz ' . $quiz->quiz_code .' не был удален. Есть зависимости/ошибка при удалении.');
+      };
+    } else {
+      Session::flash('message','Quiz ' . $quiz->quiz_code .' невозможно удалить - существуют тестирования по данному quiz-у.');
+    };
+
+    return redirect('/quizmanage');
   }
 
   public function programs()

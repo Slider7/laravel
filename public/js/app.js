@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -2312,6 +2324,610 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AM
         return Blob;
     }
 ));
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-confirmation2/dist/bootstrap-confirmation.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/bootstrap-confirmation2/dist/bootstrap-confirmation.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+ * Bootstrap Confirmation (v4.1.0)
+ * @copyright 2013 Nimit Suwannagate <ethaizone@hotmail.com>
+ * @copyright 2014-2018 Damien "Mistic" Sorel <contact@git.strangeplanet.fr>
+ * @licence Apache License, Version 2.0
+ */
+(function (global, factory) {
+   true ? factory(__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"), __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js")) :
+  undefined;
+}(this, function ($) { 'use strict';
+
+  $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
+
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+  }
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
+  function _inheritsLoose(subClass, superClass) {
+    subClass.prototype = Object.create(superClass.prototype);
+    subClass.prototype.constructor = subClass;
+    subClass.__proto__ = superClass;
+  }
+
+  if (typeof $.fn.popover === 'undefined' || $.fn.popover.Constructor.VERSION.split('.').shift() !== '4') {
+    throw new Error('Bootstrap Confirmation 4 requires Bootstrap Popover 4');
+  }
+
+  var Popover = $.fn.popover.Constructor;
+
+  /**
+   * ------------------------------------------------------------------------
+   * Constants
+   * ------------------------------------------------------------------------
+   */
+
+  var NAME = 'confirmation';
+  var VERSION = '4.1.0';
+  var DATA_KEY = "bs." + NAME;
+  var EVENT_KEY = "." + DATA_KEY;
+  var JQUERY_NO_CONFLICT = $.fn[NAME];
+  var BTN_CLASS_BASE = 'h-100 d-flex align-items-center';
+  var BTN_CLASS_DEFAULT = 'btn btn-sm';
+
+  var DefaultType = _objectSpread({}, Popover.DefaultType, {
+    singleton: 'boolean',
+    popout: 'boolean',
+    copyAttributes: '(string|array)',
+    onConfirm: 'function',
+    onCancel: 'function',
+    btnOkClass: 'string',
+    btnOkLabel: 'string',
+    btnOkIconClass: 'string',
+    btnOkIconContent: 'string',
+    btnCancelClass: 'string',
+    btnCancelLabel: 'string',
+    btnCancelIconClass: 'string',
+    btnCancelIconContent: 'string',
+    buttons: 'array'
+  });
+
+  var Default = _objectSpread({}, Popover.Default, {
+    _attributes: {},
+    _selector: null,
+    placement: 'top',
+    title: 'Are you sure?',
+    trigger: 'click',
+    confirmationEvent: undefined,
+    content: '',
+    singleton: false,
+    popout: false,
+    copyAttributes: 'href target',
+    onConfirm: $.noop,
+    onCancel: $.noop,
+    btnOkClass: BTN_CLASS_DEFAULT + " btn-primary",
+    btnOkLabel: 'Yes',
+    btnOkIconClass: '',
+    btnOkIconContent: '',
+    btnCancelClass: BTN_CLASS_DEFAULT + " btn-secondary",
+    btnCancelLabel: 'No',
+    btnCancelIconClass: '',
+    btnCancelIconContent: '',
+    buttons: [],
+    // @formatter:off
+    template: "\n<div class=\"popover confirmation\">\n  <div class=\"arrow\"></div>\n  <h3 class=\"popover-header\"></h3>\n  <div class=\"popover-body\">\n    <p class=\"confirmation-content\"></p>\n    <div class=\"confirmation-buttons text-center\">\n      <div class=\"btn-group\"></div>\n    </div>\n  </div>\n</div>" // @formatter:on
+
+  });
+
+  if (Default.whiteList) {
+    Default.whiteList['*'].push('data-apply', 'data-dismiss');
+  }
+
+  var ClassName = {
+    FADE: 'fade',
+    SHOW: 'show'
+  };
+  var Selector = {
+    TITLE: '.popover-header',
+    CONTENT: '.confirmation-content',
+    BUTTONS: '.confirmation-buttons .btn-group'
+  };
+  var Keymap = {
+    13: 'Enter',
+    27: 'Escape',
+    39: 'ArrowRight',
+    40: 'ArrowDown'
+  };
+  var Event = {
+    HIDE: "hide" + EVENT_KEY,
+    HIDDEN: "hidden" + EVENT_KEY,
+    SHOW: "show" + EVENT_KEY,
+    SHOWN: "shown" + EVENT_KEY,
+    INSERTED: "inserted" + EVENT_KEY,
+    CLICK: "click" + EVENT_KEY,
+    FOCUSIN: "focusin" + EVENT_KEY,
+    FOCUSOUT: "focusout" + EVENT_KEY,
+    MOUSEENTER: "mouseenter" + EVENT_KEY,
+    MOUSELEAVE: "mouseleave" + EVENT_KEY,
+    CONFIRMED: "confirmed" + EVENT_KEY,
+    CANCELED: "canceled" + EVENT_KEY,
+    KEYUP: "keyup" + EVENT_KEY
+  };
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+  // keep track of the last openned confirmation for keyboard navigation
+
+  var activeConfirmation;
+
+  var Confirmation =
+  /*#__PURE__*/
+  function (_Popover) {
+    _inheritsLoose(Confirmation, _Popover);
+
+    _createClass(Confirmation, null, [{
+      key: "VERSION",
+      // Getters
+      get: function get() {
+        return VERSION;
+      }
+    }, {
+      key: "Default",
+      get: function get() {
+        return Default;
+      }
+    }, {
+      key: "NAME",
+      get: function get() {
+        return NAME;
+      }
+    }, {
+      key: "DATA_KEY",
+      get: function get() {
+        return DATA_KEY;
+      }
+    }, {
+      key: "Event",
+      get: function get() {
+        return Event;
+      }
+    }, {
+      key: "EVENT_KEY",
+      get: function get() {
+        return EVENT_KEY;
+      }
+    }, {
+      key: "DefaultType",
+      get: function get() {
+        return DefaultType;
+      } // Constructor
+
+    }]);
+
+    function Confirmation(element, config) {
+      var _this;
+
+      _this = _Popover.call(this, element, config) || this;
+
+      if ((_this.config.popout || _this.config.singleton) && !_this.config.rootSelector) {
+        throw new Error('The rootSelector option is required to use popout and singleton features since jQuery 3.');
+      } // keep trace of selectors
+
+
+      _this._isDelegate = false;
+
+      if (config.selector) {
+        // container of buttons
+        config._selector = config.rootSelector + " " + config.selector;
+        _this.config._selector = config._selector;
+      } else if (config._selector) {
+        // children of container
+        _this.config._selector = config._selector;
+        _this._isDelegate = true;
+      } else {
+        // standalone
+        _this.config._selector = config.rootSelector;
+      }
+
+      if (_this.config.confirmationEvent === undefined) {
+        _this.config.confirmationEvent = _this.config.trigger;
+      }
+
+      if (!_this.config.selector) {
+        _this._copyAttributes();
+      }
+
+      _this._setConfirmationListeners();
+
+      return _this;
+    } // Overrides
+
+
+    var _proto = Confirmation.prototype;
+
+    _proto.isWithContent = function isWithContent() {
+      return true;
+    };
+
+    _proto.setContent = function setContent() {
+      var $tip = $(this.getTipElement());
+
+      var content = this._getContent();
+
+      if (typeof content === 'function') {
+        content = content.call(this.element);
+      }
+
+      this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
+      $tip.find(Selector.CONTENT).toggle(!!content);
+
+      if (content) {
+        this.setElementContent($tip.find(Selector.CONTENT), content);
+      }
+
+      if (this.config.buttons.length > 0) {
+        this._setButtons($tip, this.config.buttons);
+      } else {
+        this._setStandardButtons($tip);
+      }
+
+      $tip.removeClass(ClassName.FADE + " " + ClassName.SHOW);
+
+      this._setupKeyupEvent();
+    };
+
+    _proto.dispose = function dispose() {
+      $('body').off(Event.CLICK + "." + this.uid);
+      this.eventBody = false;
+
+      this._cleanKeyupEvent();
+
+      _Popover.prototype.dispose.call(this);
+    };
+
+    _proto.hide = function hide(callback) {
+      this._cleanKeyupEvent();
+
+      _Popover.prototype.hide.call(this, callback);
+    } // Private
+
+    /**
+     * Copy the value of `copyAttributes` on the config object
+     * @private
+     */
+    ;
+
+    _proto._copyAttributes = function _copyAttributes() {
+      var _this2 = this;
+
+      this.config._attributes = {};
+
+      if (this.config.copyAttributes) {
+        if (typeof this.config.copyAttributes === 'string') {
+          this.config.copyAttributes = this.config.copyAttributes.split(' ');
+        }
+      } else {
+        this.config.copyAttributes = [];
+      }
+
+      this.config.copyAttributes.forEach(function (attr) {
+        _this2.config._attributes[attr] = $(_this2.element).attr(attr);
+      });
+    }
+    /**
+     * Custom event listeners for popouts and singletons
+     * @private
+     */
+    ;
+
+    _proto._setConfirmationListeners = function _setConfirmationListeners() {
+      var self = this;
+
+      if (!this.config.selector) {
+        // cancel original event
+        $(this.element).on(this.config.trigger, function (e, ack) {
+          if (!ack) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+          }
+        }); // manage singleton
+
+        $(this.element).on(Event.SHOWN, function () {
+          if (self.config.singleton) {
+            // close all other popover already initialized
+            $(self.config._selector).not($(this)).filter(function () {
+              return $(this).data(DATA_KEY) !== undefined;
+            }).confirmation('hide');
+          }
+        });
+      } else {
+        // cancel original event
+        $(this.element).on(this.config.trigger, this.config.selector, function (e, ack) {
+          if (!ack) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+          }
+        });
+      }
+
+      if (!this._isDelegate) {
+        // manage popout
+        this.eventBody = false;
+        this.uid = this.element.id || Confirmation.getUID(NAME + "_group");
+        $(this.element).on(Event.SHOWN, function () {
+          if (self.config.popout && !self.eventBody) {
+            self.eventBody = $('body').on(Event.CLICK + "." + self.uid, function (e) {
+              if ($(self.config._selector).is(e.target) || $(self.config._selector).has(e.target).length > 0) {
+                return;
+              } // close all popover already initialized
+
+
+              $(self.config._selector).filter(function () {
+                return $(this).data(DATA_KEY) !== undefined;
+              }).confirmation('hide');
+              $('body').off(Event.CLICK + "." + self.uid);
+              self.eventBody = false;
+            });
+          }
+        });
+      }
+    }
+    /**
+     * Init the standard ok/cancel buttons
+     * @param $tip
+     * @private
+     */
+    ;
+
+    _proto._setStandardButtons = function _setStandardButtons($tip) {
+      var buttons = [{
+        class: this.config.btnOkClass,
+        label: this.config.btnOkLabel,
+        iconClass: this.config.btnOkIconClass,
+        iconContent: this.config.btnOkIconContent,
+        attr: this.config._attributes
+      }, {
+        class: this.config.btnCancelClass,
+        label: this.config.btnCancelLabel,
+        iconClass: this.config.btnCancelIconClass,
+        iconContent: this.config.btnCancelIconContent,
+        cancel: true
+      }];
+
+      this._setButtons($tip, buttons);
+    }
+    /**
+     * Init the buttons
+     * @param $tip
+     * @param buttons
+     * @private
+     */
+    ;
+
+    _proto._setButtons = function _setButtons($tip, buttons) {
+      var self = this;
+      var $group = $tip.find(Selector.BUTTONS).empty();
+      buttons.forEach(function (button) {
+        var btn = $('<a href="#"></a>').addClass(BTN_CLASS_BASE).addClass(button.class || BTN_CLASS_DEFAULT + " btn-secondary").html(button.label || '').attr(button.attr || {});
+
+        if (button.iconClass || button.iconContent) {
+          btn.prepend($('<i></i>').addClass(button.iconClass || '').text(button.iconContent || ''));
+        }
+
+        btn.one('click', function (e) {
+          if ($(this).attr('href') === '#') {
+            e.preventDefault();
+          }
+
+          if (button.onClick) {
+            button.onClick.call($(self.element));
+          }
+
+          if (button.cancel) {
+            self.config.onCancel.call(self.element, button.value);
+            $(self.element).trigger(Event.CANCELED, [button.value]);
+          } else {
+            self.config.onConfirm.call(self.element, button.value);
+            $(self.element).trigger(Event.CONFIRMED, [button.value]);
+            $(self.element).trigger(self.config.confirmationEvent, [true]);
+          }
+
+          self.hide();
+        });
+        $group.append(btn);
+      });
+    }
+    /**
+     * Install the keyboatd event handler
+     * @private
+     */
+    ;
+
+    _proto._setupKeyupEvent = function _setupKeyupEvent() {
+      activeConfirmation = this;
+      $(window).off(Event.KEYUP).on(Event.KEYUP, this._onKeyup.bind(this));
+    }
+    /**
+     * Remove the keyboard event handler
+     * @private
+     */
+    ;
+
+    _proto._cleanKeyupEvent = function _cleanKeyupEvent() {
+      if (activeConfirmation === this) {
+        activeConfirmation = undefined;
+        $(window).off(Event.KEYUP);
+      }
+    }
+    /**
+     * Event handler for keyboard navigation
+     * @param event
+     * @private
+     */
+    ;
+
+    _proto._onKeyup = function _onKeyup(event) {
+      if (!this.tip) {
+        this._cleanKeyupEvent();
+
+        return;
+      }
+
+      var $tip = $(this.getTipElement());
+      var key = event.key || Keymap[event.keyCode || event.which];
+      var $group = $tip.find(Selector.BUTTONS);
+      var $active = $group.find('.active');
+      var $next;
+
+      switch (key) {
+        case 'Escape':
+          this.hide();
+          break;
+
+        case 'ArrowRight':
+          if ($active.length && $active.next().length) {
+            $next = $active.next();
+          } else {
+            $next = $group.children().first();
+          }
+
+          $active.removeClass('active');
+          $next.addClass('active').focus();
+          break;
+
+        case 'ArrowLeft':
+          if ($active.length && $active.prev().length) {
+            $next = $active.prev();
+          } else {
+            $next = $group.children().last();
+          }
+
+          $active.removeClass('active');
+          $next.addClass('active').focus();
+          break;
+
+        default:
+          break;
+      }
+    } // Static
+
+    /**
+     * Generates an uui, copied from Bootrap's utils
+     * @param {string} prefix
+     * @returns {string}
+     */
+    ;
+
+    Confirmation.getUID = function getUID(prefix) {
+      var uid = prefix;
+
+      do {
+        // eslint-disable-next-line no-bitwise
+        uid += ~~(Math.random() * 1000000); // "~~" acts like a faster Math.floor() here
+      } while (document.getElementById(uid));
+
+      return uid;
+    };
+
+    Confirmation._jQueryInterface = function _jQueryInterface(config) {
+      return this.each(function () {
+        var data = $(this).data(DATA_KEY);
+
+        var _config = typeof config === 'object' ? config : {};
+
+        _config.rootSelector = $(this).selector || _config.rootSelector; // this.selector removed in jQuery > 3
+
+        if (!data && /destroy|hide/.test(config)) {
+          return;
+        }
+
+        if (!data) {
+          data = new Confirmation(this, _config);
+          $(this).data(DATA_KEY, data);
+        }
+
+        if (typeof config === 'string') {
+          if (typeof data[config] === 'undefined') {
+            throw new TypeError("No method named \"" + config + "\"");
+          }
+
+          data[config]();
+        }
+      });
+    };
+
+    return Confirmation;
+  }(Popover);
+  /**
+   * ------------------------------------------------------------------------
+   * jQuery
+   * ------------------------------------------------------------------------
+   */
+
+
+  $.fn[NAME] = Confirmation._jQueryInterface;
+  $.fn[NAME].Constructor = Confirmation;
+
+  $.fn[NAME].noConflict = function () {
+    $.fn[NAME] = JQUERY_NO_CONFLICT;
+    return Confirmation._jQueryInterface;
+  };
+
+}));
+//# sourceMappingURL=bootstrap-confirmation.js.map
+
 
 /***/ }),
 
@@ -67118,6 +67734,765 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function define(obj, key, value) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+    return obj[key];
+  }
+  try {
+    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
+    define({}, "");
+  } catch (err) {
+    define = function(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunction.displayName = define(
+    GeneratorFunctionPrototype,
+    toStringTagSymbol,
+    "GeneratorFunction"
+  );
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      define(prototype, method, function(arg) {
+        return this._invoke(method, arg);
+      });
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      define(genFun, toStringTagSymbol, "GeneratorFunction");
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return PromiseImpl.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return PromiseImpl.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList),
+      PromiseImpl
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  define(Gp, toStringTagSymbol, "Generator");
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   true ? module.exports : undefined
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/scheduler/cjs/scheduler-tracing.development.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/scheduler/cjs/scheduler-tracing.development.js ***!
@@ -101720,6 +103095,8 @@ __webpack_require__.r(__webpack_exports__);
  * building robust, powerful web applications using React + Laravel.
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+__webpack_require__(/*! bootstrap-confirmation2 */ "./node_modules/bootstrap-confirmation2/dist/bootstrap-confirmation.js");
 /**
  * Next, we will create a fresh React component instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -101733,8 +103110,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-if (document.getElementById("root")) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Main__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById("root"));
+if (document.getElementById('root')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Main__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('root'));
 }
 
 /***/ }),
@@ -101986,12 +103363,16 @@ function Filter(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var tableexport__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tableexport */ "./node_modules/tableexport/dist/js/tableexport.js");
-/* harmony import */ var tableexport__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(tableexport__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _MainReport_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MainReport.css */ "./resources/js/components/MainReport.css");
-/* harmony import */ var _MainReport_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_MainReport_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var tableexport__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tableexport */ "./node_modules/tableexport/dist/js/tableexport.js");
+/* harmony import */ var tableexport__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tableexport__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _MainReport_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MainReport.css */ "./resources/js/components/MainReport.css");
+/* harmony import */ var _MainReport_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_MainReport_css__WEBPACK_IMPORTED_MODULE_3__);
+
+
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -102005,6 +103386,10 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.it
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -102049,31 +103434,90 @@ var GruppaReport = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "tableExportButton", function (fname) {
-      var el = document.querySelector(".xlsx");
+      var el = document.querySelector('.xlsx');
 
       if (el) {
         el.parentNode.removeChild(el);
       }
 
-      tableexport__WEBPACK_IMPORTED_MODULE_1___default()(document.querySelector("#gruppa-table"), {
+      tableexport__WEBPACK_IMPORTED_MODULE_2___default()(document.querySelector('#gruppa-table'), {
         headers: true,
         // (Boolean), display table headers (th or td elements) in the <thead>, (default: true)
-        formats: ["xlsx"],
+        formats: ['xlsx'],
         // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
         filename: fname
       });
     });
+
+    _defineProperty(_assertThisInitialized(_this), "deleteResult", function (e) {
+      var result = confirm('Удалить этот результат?');
+
+      if (result) {
+        var id = e.target.dataset.qr_id;
+
+        if (id) {
+          result = _this.deleteRowByUrl('/qr/' + id);
+        }
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "deleteRowByUrl", /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(url) {
+        var csrfToken, response, resData;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                csrfToken = document.head.querySelector('[name~=csrf-token][content]').content;
+                _context.next = 3;
+                return fetch(url, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrfToken
+                  }
+                });
+
+              case 3:
+                response = _context.sent;
+                _context.next = 6;
+                return 'deleted';
+
+              case 6:
+                resData = _context.sent;
+                _context.next = 9;
+                return location.reload();
+
+              case 9:
+                return _context.abrupt("return", resData);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
 
     _defineProperty(_assertThisInitialized(_this), "formatDataTable", function (data) {
       var ids = _toConsumableArray(new Set(data.map(function (a) {
         return a.qr_id;
       })));
 
+      var colCount = Math.round(data.length / ids.length);
       var res = [];
       ids.forEach(function (id) {
-        var row = [];
+        var row = [],
+            current = 0;
         data.forEach(function (d) {
           if (d.qr_id === id) {
+            current++;
+            if (row.indexOf(d.qr_id) < 0) row.push(d.qr_id);
             if (row.indexOf(d.stud_name) < 0) row.push(d.stud_name);
             if (row.indexOf(d.pass_score) < 0) row.push(d.pass_score);
             if (row.indexOf(d.user_score) < 0) row.push(d.user_score);
@@ -102085,7 +103529,17 @@ var GruppaReport = /*#__PURE__*/function (_React$Component) {
             });
           }
         });
-        row.push(row[1] <= row[2] ? "OK" : "fail");
+
+        while (current < colCount) {
+          row.push({
+            qNum: '999',
+            points: 'none',
+            res: 0
+          });
+          current++;
+        }
+
+        row.push(row[1] <= row[2] ? 'OK' : 'fail');
         res.push(row);
       });
       return res;
@@ -102097,51 +103551,61 @@ var GruppaReport = /*#__PURE__*/function (_React$Component) {
   _createClass(GruppaReport, [{
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      if (document.querySelector("#gruppa-table")) this.tableExportButton(document.querySelector("#gruppa-header").innerHTML);
+      if (document.querySelector('#gruppa-table')) this.tableExportButton(document.querySelector('#gruppa-header').innerHTML);
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var repData = this.formatDataTable(this.props.data);
 
       if (repData[0]) {
-        var params = this.props.filter.split("/");
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: this.props.visible ? "" : "d-none"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        var params = this.props.filter.split('/');
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          className: this.props.visible ? '' : 'd-none'
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
           id: "gruppa-header",
           className: "text-center mt-3"
-        }, "\u041E\u0442\u0447\u0435\u0442 \u0442\u0435\u0441\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0433\u0440\u0443\u043F\u043F\u044B", " ", "".concat(params[3], ", \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430 ").concat(params[1], ", unit ").concat(params[2], ", \u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u0442\u0435\u043B\u044C ").concat(params[0], ": ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        }, "\u041E\u0442\u0447\u0435\u0442 \u0442\u0435\u0441\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u0433\u0440\u0443\u043F\u043F\u044B", ' ', "".concat(params[3], ", \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430 ").concat(params[1], ", unit ").concat(params[2], ", \u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u0442\u0435\u043B\u044C ").concat(params[0], ": ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
           id: "gruppa-table",
           className: "table table-striped gruppa-table"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u2116"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+          className: "result-del"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u2116"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
           className: "w-90"
-        }, "\u0424\u0418\u041E \u0442\u0435\u0441\u0442\u0438\u0440\u0443\u0435\u043C\u043E\u0433\u043E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        }, "\u0424\u0418\u041E \u0442\u0435\u0441\u0442\u0438\u0440\u0443\u0435\u043C\u043E\u0433\u043E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
           className: "w-90"
-        }, "\u041F\u0440\u043E\u0445\u043E\u0434\u043D\u043E\u0439 \u0431\u0430\u043B\u043B"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        }, "\u041F\u0440\u043E\u0445\u043E\u0434\u043D\u043E\u0439 \u0431\u0430\u043B\u043B"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
           className: "w-90"
-        }, "\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u043E \u0431\u0430\u043B\u043B\u043E\u0432"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        }, "\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u043E \u0431\u0430\u043B\u043B\u043E\u0432"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
           className: "w-90"
         }, "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442(%)"), repData[0].slice(4).map(function (col, i) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
             key: i
-          }, col.qNum ? col.qNum : "Статус");
-        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, repData.map(function (row, i) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          }, col.qNum ? i + 1 : 'Статус');
+        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, repData.map(function (row, i) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
             key: "gr-".concat(i)
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, i + 1), row.map(function (col, j) {
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+            className: "result-del"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+            className: "btn btn-danger",
+            "data-qr_id": row[0],
+            onClick: _this2.deleteResult
+          }, "\u2212")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, i + 1), row.slice(1).map(function (col, j) {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
               key: "col-".concat(i).concat(j),
-              className: _typeof(col) === "object" ? col.res ? "ok" : "fail" : ""
+              className: _typeof(col) === 'object' ? col.res ? 'ok' : 'fail' : ''
             }, col.points ? col.points : col);
           }));
         }))));
-      } else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
+      } else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null);
     }
   }]);
 
   return GruppaReport;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (GruppaReport);
 
@@ -102457,7 +103921,7 @@ var MainReport = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "gruppaReportChange", function (evt) {
       _this.props.selectRow(evt);
 
-      var gruppaFilter = "";
+      var gruppaFilter = '';
       var selectedRow = evt.target.parentNode;
 
       for (var i = 1; i <= 4; i++) {
@@ -102491,8 +103955,9 @@ var MainReport = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var period = "";
-      var sel = document.querySelector("select #period");
+      var period = ''; //console.log(this.props.reportData);
+
+      var sel = document.querySelector('select #period');
       if (sel && sel.selectedIndex > 0) period = sel.options[sel.selectedIndex].text;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container mx-auto"
@@ -102509,7 +103974,7 @@ var MainReport = /*#__PURE__*/function (_React$Component) {
           key: "rep".concat(i),
           onClick: _this2.gruppaReportChange,
           className: "selectable"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, i + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["teacher"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["program"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["unit"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["gruppa"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["cnt"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["avg_prc"]));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, i + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['teacher']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['program']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['unit']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['gruppa']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['cnt']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['avg_prc']));
       }))));
     }
   }]);

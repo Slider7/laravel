@@ -12,7 +12,7 @@ class Quiz extends Model
   ];
   public function path()
   {
-    return route('quizzes.show', $this);
+    return route('quizmanage.show', $this);
   }
 
   public function quizResult()

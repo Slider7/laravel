@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\QuizResult;
+use App\Answer;
 use Illuminate\Http\Request;
 
 class QuizResultController extends Controller
@@ -16,6 +18,13 @@ class QuizResultController extends Controller
   {
     $id = $quiz_result->qr_id;
     return $results = QuizResult::with('quiz')->where('qr_id', '=', "$id")->get();
+  }
+
+  public function destroy($qr_id)
+  {
+    Answer::where('qr_id', $qr_id)->delete();
+    QuizResult::destroy($qr_id);
+    Session::flash('message', 'Результат ' . $qr_id .' успешно удален.');
   }
 
   public function teachers()

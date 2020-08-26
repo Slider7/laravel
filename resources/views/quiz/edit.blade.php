@@ -5,7 +5,7 @@
     <div id='page' class='container col-md-8'>
         <h1>Редактирование Quiz-a</h1>
 
-        <form method="POST" action="/quizzes/{{$quiz->quiz_id}}">
+        <form method="POST" action="/quizmanage/{{$quiz->quiz_id}}">
             @csrf
             @method('PUT')
 
@@ -23,7 +23,7 @@
                 </fieldset>
                 <fieldset>
                     <input type="submit" class="btn btn-outline-primary mt-4" value='Сохранить' />
-                    <a class="btn btn-outline-secondary ml-4 mt-4" href="/quizzes" role="button">&nbsp&nbsp Отмена &nbsp&nbsp</a>
+                    <a class="btn btn-outline-secondary ml-4 mt-4" href="/quizmanage" role="button">&nbsp&nbsp Отмена &nbsp&nbsp</a>
                 </fieldset>
             </div>
         </form>

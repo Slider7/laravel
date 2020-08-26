@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 
-import "./MainReport.css";
+import './MainReport.css';
 
 class MainReport extends React.Component {
   gruppaReportChange = evt => {
     this.props.selectRow(evt);
 
-    let gruppaFilter = "";
+    let gruppaFilter = '';
     const selectedRow = evt.target.parentNode;
     for (let i = 1; i <= 4; i++) {
       gruppaFilter += `${selectedRow.cells[i].textContent}/`;
@@ -32,8 +32,9 @@ class MainReport extends React.Component {
   }
 
   render() {
-    let period = "";
-    const sel = document.querySelector("select #period");
+    let period = '';
+    //console.log(this.props.reportData);
+    const sel = document.querySelector('select #period');
     if (sel && sel.selectedIndex > 0)
       period = sel.options[sel.selectedIndex].text;
     return (
@@ -67,12 +68,12 @@ class MainReport extends React.Component {
                   className="selectable"
                 >
                   <td>{i + 1}</td>
-                  <td>{row["teacher"]}</td>
-                  <td>{row["program"]}</td>
-                  <td>{row["unit"]}</td>
-                  <td>{row["gruppa"]}</td>
-                  <td>{row["cnt"]}</td>
-                  <td>{row["avg_prc"]}</td>
+                  <td>{row['teacher']}</td>
+                  <td>{row['program']}</td>
+                  <td>{row['unit']}</td>
+                  <td>{row['gruppa']}</td>
+                  <td>{row['cnt']}</td>
+                  <td>{row['avg_prc']}</td>
                 </tr>
               );
             })}

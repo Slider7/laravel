@@ -14,7 +14,7 @@ class QuizResult extends Model
 
   public function path()
   {
-    return route('quizresults.show', $this);
+    return route('qr.show', $this);
   }
 
   //Eloquent one-to-many inverse
