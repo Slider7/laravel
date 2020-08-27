@@ -103521,7 +103521,12 @@ var GruppaReport = /*#__PURE__*/function (_React$Component) {
             if (row.indexOf(d.stud_name) < 0) row.push(d.stud_name);
             if (row.indexOf(d.pass_score) < 0) row.push(d.pass_score);
             if (row.indexOf(d.user_score) < 0) row.push(d.user_score);
-            if (row.indexOf(d.stud_percent) < 0) row.push(d.stud_percent);
+
+            if (row.indexOf(d.stud_percent) < 0) {
+              row.push(d.stud_percent);
+              row.push(d.pass_score <= d.user_score ? 'OK' : 'fail');
+            }
+
             row.push({
               qNum: d.qtext,
               points: d.points,
@@ -103539,7 +103544,6 @@ var GruppaReport = /*#__PURE__*/function (_React$Component) {
           current++;
         }
 
-        row.push(row[1] <= row[2] ? 'OK' : 'fail');
         res.push(row);
       });
       return res;
@@ -103562,6 +103566,7 @@ var GruppaReport = /*#__PURE__*/function (_React$Component) {
 
       if (repData[0]) {
         var params = this.props.filter.split('/');
+        console.log(repData[0]);
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           className: this.props.visible ? '' : 'd-none'
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
@@ -103583,7 +103588,7 @@ var GruppaReport = /*#__PURE__*/function (_React$Component) {
         }, "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442(%)"), repData[0].slice(5).map(function (col, i) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
             key: i
-          }, col.qNum ? i + 1 : 'Статус');
+          }, col.qNum ? i : 'Статус');
         }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, repData.map(function (row, i) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
             key: "gr-".concat(i)
