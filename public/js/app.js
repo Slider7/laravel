@@ -103580,7 +103580,7 @@ var GruppaReport = /*#__PURE__*/function (_React$Component) {
           className: "w-90"
         }, "\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u043E \u0431\u0430\u043B\u043B\u043E\u0432"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
           className: "w-90"
-        }, "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442(%)"), repData[0].slice(4).map(function (col, i) {
+        }, "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442(%)"), repData[0].slice(5).map(function (col, i) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
             key: i
           }, col.qNum ? i + 1 : 'Статус');

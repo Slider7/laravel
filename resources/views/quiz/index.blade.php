@@ -21,7 +21,7 @@
     <tr>
       <td style='display: none;'>{{$quiz['quiz_id']}}</td>
       <td><a href="{{ $quiz->path() }}">{{$quiz['quiz_name']}}</a></td>
-      <td>{{$quiz['quiz_code']}}</td>
+      <td><a href="{{ $quiz->path() }}">{{$quiz['quiz_code']}}</a></td>
       <td>{{$quiz['Program']}}</td>
       <td>{{$quiz['Unit']}}</td>
     </tr>

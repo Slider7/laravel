@@ -105,7 +105,7 @@ class GruppaReport extends React.Component {
                 <th className="w-90">Проходной балл</th>
                 <th className="w-90">Получено баллов</th>
                 <th className="w-90">Результат(%)</th>
-                {repData[0].slice(4).map((col, i) => (
+                {repData[0].slice(5).map((col, i) => (
                   <th key={i}>{col.qNum ? i + 1 : 'Статус'}</th>
                 ))}
               </tr>

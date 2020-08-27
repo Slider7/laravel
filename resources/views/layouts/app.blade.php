@@ -18,6 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @if (!Gate::allows('admin-results'))
+      <style>
+        .result-del{
+          display: none;
+        }
+      </style>
+    @endif
 </head>
 <body>
     <div id="app">
@@ -56,7 +63,6 @@
                                     Управление Quiz-ами
                                 </a>
                             </li>
-
                             @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

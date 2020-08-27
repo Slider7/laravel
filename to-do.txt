@@ -1,0 +1,4 @@
+
+1. Quiz - link QuizCode
+2. Resultt access only admins
+3. Results move 1 column right
