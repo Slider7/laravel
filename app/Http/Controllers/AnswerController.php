@@ -16,7 +16,7 @@ class AnswerController extends Controller
   {
     return $results = Answer::join('question as q', 'answers.q_id', '=', 'q.q_id')
       ->where('answers.qr_id', '=', "$qr_id")
-      ->orderBy('q.q_text')
+      ->orderBy('q.q_id')
       ->get();
   }
 }

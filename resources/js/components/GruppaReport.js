@@ -69,7 +69,9 @@ class GruppaReport extends React.Component {
           row.push({
             qNum: d.qtext,
             points: d.points,
-            res: d.result
+            res: d.award_points / d.maxpoint,
+            ap: d.award_points,
+            mp: d.maxpoint
           });
         }
       });
@@ -88,6 +90,7 @@ class GruppaReport extends React.Component {
 
   render() {
     const repData = this.formatDataTable(this.props.data);
+    //console.log(repData);
     if (repData[0]) {
       const params = this.props.filter.split('/');
       console.log(repData[0]);
@@ -131,8 +134,10 @@ class GruppaReport extends React.Component {
                           key={`col-${i}${j}`}
                           className={
                             typeof col === 'object'
-                              ? col.res
+                              ? col.res >= 1
                                 ? 'ok'
+                                : col.res >= 0.5
+                                ? 'some'
                                 : 'fail'
                               : ''
                           }

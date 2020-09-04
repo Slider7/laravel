@@ -9184,7 +9184,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".rep-table td,\r\n.rep-table th {\r\n  cursor: pointer;\r\n}\r\n\r\n.rep-table .selectable:hover {\r\n  background-color: lightskyblue !important;\r\n}\r\n.rep-selected {\r\n  background-color: lightskyblue !important;\r\n}\r\n\r\n.table-striped th {\r\n  text-align: center;\r\n}\r\n.table-striped,\r\n.table-striped th {\r\n  border: 1px solid #222222 !important;\r\n  padding: 2px;\r\n}\r\n.table-striped td {\r\n  border-left: 1px solid #222222 !important;\r\n  padding: 2px;\r\n}\r\n\r\n.ok {\r\n  background-color: rgb(14, 173, 14);\r\n}\r\n.fail {\r\n  background-color: red;\r\n}\r\n", ""]);
+exports.push([module.i, ".rep-table td,\n.rep-table th {\n  cursor: pointer;\n}\n\n.rep-table .selectable:hover {\n  background-color: lightskyblue !important;\n}\n.rep-selected {\n  background-color: lightskyblue !important;\n}\n\n.table-striped th {\n  text-align: center;\n}\n.table-striped,\n.table-striped th {\n  border: 1px solid #222222 !important;\n  padding: 2px;\n}\n.table-striped td {\n  border-left: 1px solid #222222 !important;\n  padding: 2px;\n}\n\n.ok {\n  background-color: rgb(14, 173, 14);\n}\n.fail {\n  background-color: red;\n}\n\n.some {\n  background-color: rgb(241, 169, 35);\n}\n", ""]);
 
 // exports
 
@@ -103530,7 +103530,9 @@ var GruppaReport = /*#__PURE__*/function (_React$Component) {
             row.push({
               qNum: d.qtext,
               points: d.points,
-              res: d.result
+              res: d.award_points / d.maxpoint,
+              ap: d.award_points,
+              mp: d.maxpoint
             });
           }
         });
@@ -103562,7 +103564,7 @@ var GruppaReport = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var repData = this.formatDataTable(this.props.data);
+      var repData = this.formatDataTable(this.props.data); //console.log(repData);
 
       if (repData[0]) {
         var params = this.props.filter.split('/');
@@ -103601,7 +103603,7 @@ var GruppaReport = /*#__PURE__*/function (_React$Component) {
           }, "\u2212")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, i + 1), row.slice(1).map(function (col, j) {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
               key: "col-".concat(i).concat(j),
-              className: _typeof(col) === 'object' ? col.res ? 'ok' : 'fail' : ''
+              className: _typeof(col) === 'object' ? col.res >= 1 ? 'ok' : col.res >= 0.5 ? 'some' : 'fail' : ''
             }, col.points ? col.points : col);
           }));
         }))));
@@ -104045,19 +104047,19 @@ var Selector = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "fillOptions", function (list) {
       var sel = _this.selRef.current;
-      var option = document.createElement("option");
-      option.value = "none";
-      option.text = "Любое значение";
+      var option = document.createElement('option');
+      option.value = 'none';
+      option.text = 'Любое значение';
       sel.add(option);
       list.forEach(function (item) {
-        var opt = document.createElement("option");
+        var opt = document.createElement('option');
         opt.value = item;
         opt.text = item;
         sel.add(opt);
       });
 
-      if (_this.props.name === "period") {
-        sel.options[1].value = 1;
+      if (_this.props.name === 'period') {
+        sel.options[1].value = 0;
         sel.options[2].value = 7;
         sel.options[3].value = 30;
         sel.options[4].value = 91;

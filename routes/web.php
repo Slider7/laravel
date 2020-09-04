@@ -30,6 +30,19 @@ Route::group(['prefix' => 'quizmanage',  'middleware' =>  ['auth', 'can:admin-qu
   Route::put('/{quiz}', 'QuizController@update');
 });
 
+// REST User
+Route::group(['prefix' => 'users',  'middleware' =>  ['auth', 'can:admin-users']], function()
+{
+  Route::get('/', 'UserController@index');
+  Route::post('/', 'UserController@store');
+  //Route::get('/create', 'UserController@create')->name('quizmanage.create');
+  Route::delete('/{user}', 'UserController@destroy');
+  Route::get('/{user}', 'UserController@show')->name('users.show');
+  Route::get('/{user}/edit', 'UserController@edit');
+  Route::put('/{user}', 'UserController@update');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

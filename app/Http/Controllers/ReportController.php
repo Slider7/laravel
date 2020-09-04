@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
+
 use App\Report;
 use DB;
 use Illuminate\Http\Request;
@@ -17,7 +19,6 @@ class ReportController extends Controller
   public function filterReport($teacher, $program, $unit, $gruppa, $period)
   {
     $params = ['teacher' => $teacher, 'program' => $program, 'unit' => $unit, 'gruppa' => $gruppa, 'period' => $period];
-
     $query = Report::select('stud_name', 'phone', 'teacher', 'program', 'unit', 'gruppa', 'user_score', 'finished_at', 'quiz_time', 'qr_id');
 
     foreach ($params as $key => $val) {
@@ -29,13 +30,12 @@ class ReportController extends Controller
       }
     }
     if ($params['period'] != 'none') {
-      $end =  date('Y-m-d');
-      $start = date('Y-m-d', strtotime('-' . $params['period'] . " days"));
-      $query = $query->whereBetween('finished_at', [$start, $end]);
+      $beginDate = new DateTime();
+      date_modify($beginDate, '-'. $params['period'] .' days');
+      $query = $query->where('finished_at', '>=', $beginDate->format('Y-m-d'));
     };
 
-    $results = $query->take(50)->get();
-
+    $results = $query->take(100)->get();
     return $results;
   }
 
@@ -57,9 +57,9 @@ class ReportController extends Controller
     }
 
     if ($params['period'] != 'none') {
-      $end =  date('Y-m-d');
-      $start = date('Y-m-d', strtotime('-' . $params['period'] . " days"));
-      $query = $query->whereBetween('finished_at', [$start, $end]);
+      $beginDate = new DateTime();
+      date_modify($beginDate, '-'. $params['period'] .' days');
+      $query = $query->where('finished_at', '>=', $beginDate->format('Y-m-d'));
     };
 
     $results = $query->groupBy('teacher', 'quiz_code', 'gruppa')->get();
@@ -81,7 +81,9 @@ class ReportController extends Controller
         'all_quiz_res.stud_percent',
         DB::raw('CAST(SUBSTRING(q_text, 1, 3) AS UNSIGNED) as qtext'),
         DB::raw("concat(quiz_detail2.award_points,  ' из ' , quiz_detail2.maxpoint) as points"),
-        'quiz_detail2.result'
+        'quiz_detail2.result',
+        'quiz_detail2.award_points',
+        'quiz_detail2.maxpoint'
       );
 
     foreach ($params as $key => $val) {
@@ -90,7 +92,7 @@ class ReportController extends Controller
         $query = $query->where('all_quiz_res.' . $key, "$condition");
       }
     }
-    $results = $query->orderBy('qr_id')->orderBy('qr_id')->get();
+    $results = $query->orderBy('qr_id')->orderBy('q_id')->get();
     return $results;
   }
 }

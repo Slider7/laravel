@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Session;
 use App\Quiz;
-use \App\QuizREsult;
+use \App\QuizResult;
 use Illuminate\Http\Request;
 
 use function GuzzleHttp\Promise\all;

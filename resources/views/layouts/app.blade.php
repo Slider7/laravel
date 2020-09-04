@@ -57,6 +57,13 @@
                                 </li>
                             @endif
                         @else
+                            @if (Gate::allows('admin-users'))
+                            <li class="nav-item mx-2">
+                                <a class="btn btn-outline-secondary p-1 my-1" href="/users" role="button">
+                                    Пользователи
+                                </a>
+                            </li>
+                            @endif
                             @if (Gate::allows('admin-quizzes'))
                             <li class="nav-item">
                                 <a class="btn btn-outline-secondary p-1 my-1" href="/quizmanage" role="button">
@@ -97,6 +104,7 @@
 
             @yield('content')
         </main>
+
     </div>
 </body>
 </html>
