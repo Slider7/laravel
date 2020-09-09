@@ -33,3 +33,8 @@
 .some {
   background-color: rgb(241, 169, 35);
 }
+
+.avg-row {
+  background-color: lightgreen !important;
+  font-weight: 600;
+}

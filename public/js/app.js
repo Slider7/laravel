@@ -9184,7 +9184,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".rep-table td,\n.rep-table th {\n  cursor: pointer;\n}\n\n.rep-table .selectable:hover {\n  background-color: lightskyblue !important;\n}\n.rep-selected {\n  background-color: lightskyblue !important;\n}\n\n.table-striped th {\n  text-align: center;\n}\n.table-striped,\n.table-striped th {\n  border: 1px solid #222222 !important;\n  padding: 2px;\n}\n.table-striped td {\n  border-left: 1px solid #222222 !important;\n  padding: 2px;\n}\n\n.ok {\n  background-color: rgb(14, 173, 14);\n}\n.fail {\n  background-color: red;\n}\n\n.some {\n  background-color: rgb(241, 169, 35);\n}\n", ""]);
+exports.push([module.i, ".rep-table td,\n.rep-table th {\n  cursor: pointer;\n}\n\n.rep-table .selectable:hover {\n  background-color: lightskyblue !important;\n}\n.rep-selected {\n  background-color: lightskyblue !important;\n}\n\n.table-striped th {\n  text-align: center;\n}\n.table-striped,\n.table-striped th {\n  border: 1px solid #222222 !important;\n  padding: 2px;\n}\n.table-striped td {\n  border-left: 1px solid #222222 !important;\n  padding: 2px;\n}\n\n.ok {\n  background-color: rgb(14, 173, 14);\n}\n.fail {\n  background-color: red;\n}\n\n.some {\n  background-color: rgb(241, 169, 35);\n}\n\n.avg-row {\n  background-color: lightgreen !important;\n  font-weight: 600;\n}\n", ""]);
 
 // exports
 
@@ -103564,11 +103564,10 @@ var GruppaReport = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var repData = this.formatDataTable(this.props.data); //console.log(repData);
+      var repData = this.formatDataTable(this.props.data);
 
       if (repData[0]) {
         var params = this.props.filter.split('/');
-        console.log(repData[0]);
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           className: this.props.visible ? '' : 'd-none'
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
@@ -103935,11 +103934,41 @@ var MainReport = /*#__PURE__*/function (_React$Component) {
         gruppaFilter += "".concat(selectedRow.cells[i].textContent, "/");
       }
 
+      gruppaFilter += document.querySelector('#period').value;
       fetch("/gruppa-report/".concat(gruppaFilter)).then(function (response) {
         return response.json();
       }).then(function (data) {
         _this.props.gruppaReportDataChange(data, gruppaFilter);
       });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "getDataWithAvg", function (data) {
+      var res = [];
+      var curr = data[0].teacher,
+          avg = 0,
+          k = 0;
+      data.forEach(function (row) {
+        if (row.teacher != curr) {
+          res.push({
+            teacher: 'Средний %',
+            cnt: k,
+            avg_prc: (avg / k).toFixed(3)
+          });
+          avg = 0;
+          k = 0;
+          curr = row.teacher;
+        }
+
+        avg += parseFloat(row.avg_prc * row.cnt);
+        k += row.cnt;
+        res.push(row);
+      });
+      res.push({
+        teacher: 'Средний %',
+        cnt: k,
+        avg_prc: (avg / k).toFixed(3)
+      });
+      return res;
     });
 
     return _this;
@@ -103962,10 +103991,16 @@ var MainReport = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var period = ''; //console.log(this.props.reportData);
-
+      var period = '',
+          currTeacher = '',
+          reportData = [];
       var sel = document.querySelector('select #period');
       if (sel && sel.selectedIndex > 0) period = sel.options[sel.selectedIndex].text;
+
+      if (this.props.reportData[0]) {
+        reportData = this.getDataWithAvg(this.props.reportData);
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container mx-auto"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -103976,12 +104011,14 @@ var MainReport = /*#__PURE__*/function (_React$Component) {
       }, "\u041E\u0442\u0447\u0435\u0442 \u043F\u043E \u0442\u0435\u0441\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F\u043C: ", period)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         id: "quiz-table",
         className: "table table-striped table-hover table-light rep-table"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u2116"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u0442\u0435\u043B\u044C"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u042E\u043D\u0438\u0442"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u0413\u0440\u0443\u043F\u043F\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u041F\u0440\u043E\u0442\u0435\u0441\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "%"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.props.reportData.map(function (row, i) {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u2116"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u0442\u0435\u043B\u044C"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u042E\u043D\u0438\u0442"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u0413\u0440\u0443\u043F\u043F\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u041F\u0440\u043E\u0442\u0435\u0441\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043E"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "%"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, reportData.map(function (row, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: "rep".concat(i),
-          onClick: _this2.gruppaReportChange,
-          className: "selectable"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, i + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['teacher']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['program']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['unit']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['gruppa']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['cnt']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['avg_prc']));
+          onClick: row['teacher'] != 'Средний %' ? _this2.gruppaReportChange : null,
+          className: row['teacher'] == 'Средний %' ? 'avg-row' : 'selectable'
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, i + 1), row['teacher'] == 'Средний %' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          colSpan: "4"
+        }, row['teacher']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['cnt'])) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['teacher']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['program']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['unit']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['gruppa']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['cnt'])), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['avg_prc']));
       }))));
     }
   }]);
@@ -104161,7 +104198,7 @@ var TestReport = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(this.props.reportData[0] ? "" : "d-none", " mx-5")
+        className: "".concat(this.props.reportData[0] ? '' : 'd-none', " mx-5")
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "text-center mt-3"
       }, "\u0414\u0430\u043D\u043D\u044B\u0435 \u0442\u0435\u0441\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
@@ -104170,14 +104207,14 @@ var TestReport = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u2116"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quiz-\u043A\u043E\u0434"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u0422\u0435\u043A\u0441\u0442 \u0432\u043E\u043F\u0440\u043E\u0441\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         className: "d-none"
       }, "\u041E\u0442\u0432\u0435\u0442"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u041D\u0430\u0431\u0440\u0430\u043D\u043E \u0431\u0430\u043B\u043B\u043E\u0432"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u041F\u043E\u0440\u043E\u0433\u043E\u0432\u044B\u0439 \u0431\u0430\u043B\u043B"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.props.reportData.map(function (row, i) {
-        var ap = row["award_points"],
-            mp = row["maxpoint"];
+        var ap = row['award_points'],
+            mp = row['maxpoint'];
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: "test-rep".concat(i)
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, i + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["quiz_code"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row["q_text"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, i + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['quiz_code']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, row['q_text']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
           className: "d-none"
-        }, row["user_resp"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-          className: ap >= mp ? "ok" : "fail"
+        }, row['user_resp']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: ap / mp >= 0.5 ? ap / mp >= 1 ? 'ok' : 'some' : 'fail'
         }, ap), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, mp));
       }))));
     }

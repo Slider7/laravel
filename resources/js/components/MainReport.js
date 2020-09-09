@@ -11,6 +11,7 @@ class MainReport extends React.Component {
     for (let i = 1; i <= 4; i++) {
       gruppaFilter += `${selectedRow.cells[i].textContent}/`;
     }
+    gruppaFilter += document.querySelector('#period').value;
 
     fetch(`/gruppa-report/${gruppaFilter}`)
       .then(response => {
@@ -31,12 +32,40 @@ class MainReport extends React.Component {
     }
   }
 
+  getDataWithAvg = data => {
+    let res = [];
+    let curr = data[0].teacher,
+      avg = 0,
+      k = 0;
+    data.forEach(row => {
+      if (row.teacher != curr) {
+        res.push({
+          teacher: 'Средний %',
+          cnt: k,
+          avg_prc: (avg / k).toFixed(3)
+        });
+        avg = 0;
+        k = 0;
+        curr = row.teacher;
+      }
+      avg += parseFloat(row.avg_prc * row.cnt);
+      k += row.cnt;
+      res.push(row);
+    });
+    res.push({ teacher: 'Средний %', cnt: k, avg_prc: (avg / k).toFixed(3) });
+    return res;
+  };
+
   render() {
-    let period = '';
-    //console.log(this.props.reportData);
+    let period = '',
+      currTeacher = '',
+      reportData = [];
     const sel = document.querySelector('select #period');
     if (sel && sel.selectedIndex > 0)
       period = sel.options[sel.selectedIndex].text;
+    if (this.props.reportData[0]) {
+      reportData = this.getDataWithAvg(this.props.reportData);
+    }
     return (
       <div className="container mx-auto">
         <div className="d-flex justify-content-center align-items-center">
@@ -60,19 +89,34 @@ class MainReport extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.reportData.map((row, i) => {
+            {reportData.map((row, i) => {
               return (
                 <tr
                   key={`rep${i}`}
-                  onClick={this.gruppaReportChange}
-                  className="selectable"
+                  onClick={
+                    row['teacher'] != 'Средний %'
+                      ? this.gruppaReportChange
+                      : null
+                  }
+                  className={
+                    row['teacher'] == 'Средний %' ? 'avg-row' : 'selectable'
+                  }
                 >
                   <td>{i + 1}</td>
-                  <td>{row['teacher']}</td>
-                  <td>{row['program']}</td>
-                  <td>{row['unit']}</td>
-                  <td>{row['gruppa']}</td>
-                  <td>{row['cnt']}</td>
+                  {row['teacher'] == 'Средний %' ? (
+                    <>
+                      <td colSpan="4">{row['teacher']}</td>
+                      <td>{row['cnt']}</td>
+                    </>
+                  ) : (
+                    <>
+                      <td>{row['teacher']}</td>
+                      <td>{row['program']}</td>
+                      <td>{row['unit']}</td>
+                      <td>{row['gruppa']}</td>
+                      <td>{row['cnt']}</td>
+                    </>
+                  )}
                   <td>{row['avg_prc']}</td>
                 </tr>
               );

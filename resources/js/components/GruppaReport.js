@@ -90,10 +90,8 @@ class GruppaReport extends React.Component {
 
   render() {
     const repData = this.formatDataTable(this.props.data);
-    //console.log(repData);
     if (repData[0]) {
       const params = this.props.filter.split('/');
-      console.log(repData[0]);
       return (
         <div className={this.props.visible ? '' : 'd-none'}>
           <h4 id="gruppa-header" className="text-center mt-3">

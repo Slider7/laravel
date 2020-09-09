@@ -64,7 +64,7 @@ Route::get('/period-col', 'QuizController@periods');
 // REST GET Report
 Route::get('/report', 'ReportController@index');
 Route::get('/report/{teacher}/{program}/{unit}/{gruppa}/{period}', 'ReportController@GroupedReport');
-Route::get('/gruppa-report/{teacher}/{program}/{unit}/{gruppa}', 'ReportController@GruppaDetailReport');
+Route::get('/gruppa-report/{teacher}/{program}/{unit}/{gruppa}/{period}', 'ReportController@GruppaDetailReport');
 Route::get('/extra-report/{teacher}/{program}/{unit}/{gruppa}/{period}', 'ReportController@filterReport');
 
 // REST GET Answers

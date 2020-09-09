@@ -62,13 +62,13 @@ class ReportController extends Controller
       $query = $query->where('finished_at', '>=', $beginDate->format('Y-m-d'));
     };
 
-    $results = $query->groupBy('teacher', 'quiz_code', 'gruppa')->get();
+    $results = $query->groupBy('teacher', 'quiz_code', 'gruppa')->orderBy('teacher')->get();
     return $results;
   }
 
-  public function GruppaDetailReport($teacher, $program, $unit, $gruppa)
+  public function GruppaDetailReport($teacher, $program, $unit, $gruppa, $period)
   {
-    $params = ['teacher' => $teacher, 'program' => $program, 'unit' => $unit, 'gruppa' => $gruppa];
+    $params = ['teacher' => $teacher, 'program' => $program, 'unit' => $unit, 'gruppa' => $gruppa, 'period' => $period];
 
     $query = DB::table('all_quiz_res')
       ->join('quiz_detail2', 'all_quiz_res.qr_id', '=', 'quiz_detail2.qr_id')
@@ -87,11 +87,20 @@ class ReportController extends Controller
       );
 
     foreach ($params as $key => $val) {
-      $condition = $params[$key];
-      if ($condition != 'none') {
-        $query = $query->where('all_quiz_res.' . $key, "$condition");
+      if ($key != 'period') {
+        $condition = $params[$key];
+        if ($condition != 'none') {
+          $query = $query->where('all_quiz_res.' . $key, "$condition");
+        }
       }
     }
+
+    if ($params['period'] != 'none') {
+      $beginDate = new DateTime();
+      date_modify($beginDate, '-'. $params['period'] .' days');
+      $query = $query->where('all_quiz_res.finished_at', '>=', $beginDate->format('Y-m-d'));
+    };
+
     $results = $query->orderBy('qr_id')->orderBy('q_id')->get();
     return $results;
   }
